@@ -16,6 +16,7 @@
 		964861AD195F06C0005D2E89 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964861AC195F06C0005D2E89 /* LocationManager.swift */; };
 		964861B0195F0874005D2E89 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964861AF195F0874005D2E89 /* CoreLocation.framework */; };
 		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
+		DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */; };
 		E3C69FF0195EDA1F004F8F23 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FEE195EDA1F004F8F23 /* Model.xcdatamodeld */; };
 		E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FF2195EDD41004F8F23 /* _Point.swift */; };
 		E3C69FF6195EDD41004F8F23 /* _Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FF3195EDD41004F8F23 /* _Route.swift */; };
@@ -51,6 +52,7 @@
 		964861AC195F06C0005D2E89 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Model/LocationManager.swift; sourceTree = "<group>"; };
 		964861AF195F0874005D2E89 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointDetailViewController.swift; sourceTree = "<group>"; };
 		E3C69FEF195EDA1F004F8F23 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E3C69FF2195EDD41004F8F23 /* _Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Point.swift; sourceTree = "<group>"; };
 		E3C69FF3195EDD41004F8F23 /* _Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Route.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				96409601195ED769004ECEBF /* MapViewController.swift */,
+				DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				E3C69FFB195EDD4F004F8F23 /* Point.swift in Sources */,
 				E3C69FF7195EDD41004F8F23 /* _User.swift in Sources */,
 				E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */,
+				DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */,
 				E3C69FF6195EDD41004F8F23 /* _Route.swift in Sources */,
 				E3DB028A195EDDFF0029663D /* GTPersistentStoreCoordinator.swift in Sources */,
 				964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */,
