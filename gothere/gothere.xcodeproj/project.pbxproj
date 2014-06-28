@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964095FC195ED769004ECEBF /* AppDelegate.swift */; };
+		96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964095FE195ED769004ECEBF /* gothere.xcdatamodeld */; };
+		96409602195ED769004ECEBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409601195ED769004ECEBF /* ViewController.swift */; };
+		96409605195ED769004ECEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96409603195ED769004ECEBF /* Main.storyboard */; };
+		96409607195ED769004ECEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96409606195ED769004ECEBF /* Images.xcassets */; };
+		96409613195ED769004ECEBF /* gothereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409612195ED769004ECEBF /* gothereTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9640960D195ED769004ECEBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 964095EF195ED769004ECEBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 964095F6195ED769004ECEBF;
+			remoteInfo = gothere;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		964095F7195ED769004ECEBF /* gothere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gothere.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		964095FB195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		964095FC195ED769004ECEBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		964095FF195ED769004ECEBF /* gothere.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gothere.xcdatamodel; sourceTree = "<group>"; };
+		96409601195ED769004ECEBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		96409604195ED769004ECEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		96409606195ED769004ECEBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9640960C195ED769004ECEBF /* gothereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gothereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		96409611195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96409612195ED769004ECEBF /* gothereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gothereTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		964095F4195ED769004ECEBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96409609195ED769004ECEBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		964095EE195ED769004ECEBF = {
+			isa = PBXGroup;
+			children = (
+				964095F9195ED769004ECEBF /* gothere */,
+				9640960F195ED769004ECEBF /* gothereTests */,
+				964095F8195ED769004ECEBF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		964095F8195ED769004ECEBF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				964095F7195ED769004ECEBF /* gothere.app */,
+				9640960C195ED769004ECEBF /* gothereTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		964095F9195ED769004ECEBF /* gothere */ = {
+			isa = PBXGroup;
+			children = (
+				964095FC195ED769004ECEBF /* AppDelegate.swift */,
+				96409601195ED769004ECEBF /* ViewController.swift */,
+				96409603195ED769004ECEBF /* Main.storyboard */,
+				96409606195ED769004ECEBF /* Images.xcassets */,
+				964095FE195ED769004ECEBF /* gothere.xcdatamodeld */,
+				964095FA195ED769004ECEBF /* Supporting Files */,
+			);
+			path = gothere;
+			sourceTree = "<group>";
+		};
+		964095FA195ED769004ECEBF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				964095FB195ED769004ECEBF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9640960F195ED769004ECEBF /* gothereTests */ = {
+			isa = PBXGroup;
+			children = (
+				96409612195ED769004ECEBF /* gothereTests.swift */,
+				96409610195ED769004ECEBF /* Supporting Files */,
+			);
+			path = gothereTests;
+			sourceTree = "<group>";
+		};
+		96409610195ED769004ECEBF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				96409611195ED769004ECEBF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		964095F6195ED769004ECEBF /* gothere */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96409616195ED769004ECEBF /* Build configuration list for PBXNativeTarget "gothere" */;
+			buildPhases = (
+				964095F3195ED769004ECEBF /* Sources */,
+				964095F4195ED769004ECEBF /* Frameworks */,
+				964095F5195ED769004ECEBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gothere;
+			productName = gothere;
+			productReference = 964095F7195ED769004ECEBF /* gothere.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9640960B195ED769004ECEBF /* gothereTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96409619195ED769004ECEBF /* Build configuration list for PBXNativeTarget "gothereTests" */;
+			buildPhases = (
+				96409608195ED769004ECEBF /* Sources */,
+				96409609195ED769004ECEBF /* Frameworks */,
+				9640960A195ED769004ECEBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9640960E195ED769004ECEBF /* PBXTargetDependency */,
+			);
+			name = gothereTests;
+			productName = gothereTests;
+			productReference = 9640960C195ED769004ECEBF /* gothereTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		964095EF195ED769004ECEBF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Alexey Konyakhin";
+				TargetAttributes = {
+					964095F6195ED769004ECEBF = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					9640960B195ED769004ECEBF = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 964095F6195ED769004ECEBF;
+					};
+				};
+			};
+			buildConfigurationList = 964095F2195ED769004ECEBF /* Build configuration list for PBXProject "gothere" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 964095EE195ED769004ECEBF;
+			productRefGroup = 964095F8195ED769004ECEBF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				964095F6195ED769004ECEBF /* gothere */,
+				9640960B195ED769004ECEBF /* gothereTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		964095F5195ED769004ECEBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96409605195ED769004ECEBF /* Main.storyboard in Resources */,
+				96409607195ED769004ECEBF /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9640960A195ED769004ECEBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		964095F3195ED769004ECEBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96409602195ED769004ECEBF /* ViewController.swift in Sources */,
+				96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */,
+				964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96409608195ED769004ECEBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96409613195ED769004ECEBF /* gothereTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9640960E195ED769004ECEBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 964095F6195ED769004ECEBF /* gothere */;
+			targetProxy = 9640960D195ED769004ECEBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		96409603195ED769004ECEBF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96409604195ED769004ECEBF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		96409614195ED769004ECEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		96409615195ED769004ECEBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		96409617195ED769004ECEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = gothere/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		96409618195ED769004ECEBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = gothere/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9640961A195ED769004ECEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/gothere.app/gothere";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = gothereTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		9640961B195ED769004ECEBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/gothere.app/gothere";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = gothereTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		964095F2195ED769004ECEBF /* Build configuration list for PBXProject "gothere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96409614195ED769004ECEBF /* Debug */,
+				96409615195ED769004ECEBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96409616195ED769004ECEBF /* Build configuration list for PBXNativeTarget "gothere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96409617195ED769004ECEBF /* Debug */,
+				96409618195ED769004ECEBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		96409619195ED769004ECEBF /* Build configuration list for PBXNativeTarget "gothereTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9640961A195ED769004ECEBF /* Debug */,
+				9640961B195ED769004ECEBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		964095FE195ED769004ECEBF /* gothere.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				964095FF195ED769004ECEBF /* gothere.xcdatamodel */,
+			);
+			currentVersion = 964095FF195ED769004ECEBF /* gothere.xcdatamodel */;
+			path = gothere.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 964095EF195ED769004ECEBF /* Project object */;
+}
