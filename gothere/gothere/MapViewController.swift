@@ -7,12 +7,36 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
-                            
+class MapViewController: UIViewController, MKMapViewDelegate {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        LoadingView.ShowLoadingView(self, show: true)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
+            if routes {
+                NSLog("%@", routes.description)
+
+                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
+                    if route {
+                        NSLog("%@", route.description)
+                        NSLog("%@", route!.points.description)
+                    }
+                    else {
+                        NSLog("%@", error.description)
+                    }
+                })
+            }
+            else {
+                NSLog("%@", error.description)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +44,9 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool){
+       LoadingView.ShowLoadingView(self, show: false)
+    }
 
 }
 

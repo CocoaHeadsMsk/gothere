@@ -7,7 +7,7 @@ enum UserRelationships: String {
     case finishedRoutes = "finishedRoutes"
 }
 
-@objc
+@objc(_User)
 class _User: NSManagedObject {
 
     /// pragma mark - Class methods

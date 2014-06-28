@@ -7,3 +7,5 @@
 # Pods/
 /gothere/Build
 xcuserdata
+.*.swp
+*.orig
