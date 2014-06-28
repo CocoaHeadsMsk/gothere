@@ -44,7 +44,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		self.wfile.write(js)
 
 
-	def send_RoadDetailRequest(self):
+	def send_RoadDetailRequest(self, id):
 		#Open the static file requested and send it
 		
 		import json
@@ -152,7 +152,11 @@ class MyHandler(BaseHTTPRequestHandler):
 							<a href=RoadListRequest>\
 								Click to get RoadListRequest\
 							</a>\
-						</p>")
+								<form method=\"get\" action=\"RoadDetailRequest\">\
+								<input type=\"text\" name=\"Id\" value=\"1\"/>\
+								<input type=\"submit\" name=\"\" />\
+								</form>\
+							</p>")
 		self.wfile.write("<h1>Manage commands</h1>\
 						<p>\
 							<a href=stop>\
@@ -196,8 +200,12 @@ class MyHandler(BaseHTTPRequestHandler):
 				self.send_RoadListRequest()
 				return
 			#TOOD: Add the read id
-			if self.path.endswith("RoadDetailRequest"):
-				self.send_RoadDetailRequest()
+			if self.path.find("RoadDetailRequest?")!=-1:
+				from urlparse import urlparse, parse_qs
+				params = parse_qs(urlparse(self.path).query)
+				print params
+				id = params['Id']
+				self.send_RoadDetailRequest(id)
 				return
 			if self.path.endswith("stop"):
 				print 'SERVER', SERVER
