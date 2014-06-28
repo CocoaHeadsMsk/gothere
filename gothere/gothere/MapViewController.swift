@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if routes {
                 NSLog("%@", routes.description)
 
-                BackendClient.instance.getRouteDetails({ (route: Route?, error: NSError?) in
+                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
                     if route {
                         NSLog("%@", route.description)
                         NSLog("%@", route!.points.description)
