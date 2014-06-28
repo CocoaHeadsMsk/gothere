@@ -1,0 +1,42 @@
+Json protocol
+
+{
+  "RoadLisrRequest": {
+    "RoadList": [
+      {
+        "RoadShot": {
+          "RoadId": "id",
+          "Name": "RoadName",
+          "Raiting": "Stars(0-5)",
+          "Dificult": "1-5"
+        }
+      }
+    ]
+  },
+  "RoadDetailRequest": {
+    "RoadDetail": {
+      "RoadId": "id",
+      "Name": "RoadName",
+      "CheckPoints": [
+        {
+          "CheckPoint": {
+            "GeoPoint": {
+              "lat": 43.45,
+              "lon": 53.4
+            },
+            "url": "http://CheckPointUrl.com:8081",
+            "StoryId": "StoryId"
+          }
+        }
+      ]
+    }
+  },
+  "StoryRequest": {
+    "Story": {
+      "StoryId": "StoryId",
+      "Title": "Title",
+      "Description": "Description",
+      "PhotoDescriptionUrl": "http://photo url.com:80"
+    }
+  }
+}
