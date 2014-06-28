@@ -8,6 +8,14 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import glob
 import socket
 
+''' 
+	how to run it from terminal%
+	mkdir GothereServerRuntime
+	cd GothereServerRuntime
+	Hld-Mac-Pro:temp Apple$ curl https://raw.githubusercontent.com/Chere/master/Server/GoThereServer.py > GoThereServer.py
+	python Hld-Mac-Pro:temp Apple$ curl GoThereServer.py
+'''
+
 SERVER = None
 ADDRESS = ""
 CUR_DIR=os.path.dirname(sys.argv[0])
