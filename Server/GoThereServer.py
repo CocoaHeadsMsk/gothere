@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin python
 
 import argparse
 import httplib
@@ -9,11 +9,13 @@ import glob
 import socket
 
 ''' 
-	how to run it from terminal%
+	how to run it from terminal:
+	#!/usr/bin python  #for derbian
 	mkdir GothereServerRuntime
 	cd GothereServerRuntime
-	Hld-Mac-Pro:temp Apple$ curl https://raw.githubusercontent.com/Chere/master/Server/GoThereServer.py > GoThereServer.py
-	python Hld-Mac-Pro:temp Apple$ curl GoThereServer.py
+	curl https://raw.githubusercontent.com/Chere/master/Server/GoThereServer.py > GoThereServer.py
+	chmod g+w GoThereServer.py 
+	python GoThereServer.py
 '''
 
 SERVER = None
