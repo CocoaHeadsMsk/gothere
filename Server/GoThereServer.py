@@ -8,8 +8,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import glob
 import socket
 
-global SERVER
-SERVER = "none"
+SERVER = None
 ADDRESS = ""
 CUR_DIR=os.path.dirname(sys.argv[0])
 CONTENT_PATH='content'
@@ -217,10 +216,10 @@ def run_server(port=8081):
 		#incoming request
 		server = HTTPServer(('', port), MyHandler)
 		print 'Started httpserver on port ', port
-	
+		SERVER = server
 		#Wait forever for incoming htto requests
 		server.serve_forever()
-		SERVER = server
+
 
 	except KeyboardInterrupt:
 		print '^C received, shutting down the web server'
