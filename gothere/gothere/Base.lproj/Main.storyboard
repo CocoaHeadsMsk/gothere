@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HYo-Fg-Hax">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HYo-Fg-Hax">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -23,8 +23,8 @@
                                 </connections>
                             </mapView>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUN-8t-NVh">
-                                <rect key="frame" x="374" y="270" width="161" height="30"/>
-                                <state key="normal" title="Choose your route >">
+                                <rect key="frame" x="393" y="270" width="161" height="30"/>
+                                <state key="normal" title="Choose your route &gt;">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -32,6 +32,9 @@
                                     <segue destination="ITj-Kr-Ovn" kind="show" id="qcH-Uq-X8L"/>
                                 </connections>
                             </button>
+                            <view appearanceType="aqua" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZD8-IR-vc7" customClass="BlurredView" customModule="gothere" customModuleProvider="target">
+                                <rect key="frame" x="47" y="34" width="471" height="236"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -40,12 +43,13 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="map" destination="HL2-31-gem" id="vmp-8F-JL7"/>
                         <segue destination="uaH-Ec-ngy" kind="custom" identifier="toPointDetailSegue" id="x1Y-9V-wlg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tE-3S-VVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="-289"/>
+            <point key="canvasLocation" x="269" y="-334"/>
         </scene>
         <!--Choose-a-Route View Controller-->
         <scene sceneID="Cmv-lI-yJB">

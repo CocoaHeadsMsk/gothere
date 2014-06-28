@@ -9,7 +9,7 @@
 import UIKit
 
 class BackendClient: NSObject {
-    let baseURL = NSURL(string: "http://localhost:8081/")
+    let baseURL = NSURL(string: "http://mediquest.me:8082/")
 
     class var instance: BackendClient {
         struct Instance {
@@ -31,6 +31,12 @@ class BackendClient: NSObject {
                 let HTTPResponse = response as NSHTTPURLResponse
                 var documentContents: AnyObject?
                 var documentError: NSError?
+                if let r = response {
+                    
+                }
+                else {
+                    NSLog("xxx")
+                }
                 if !response || !data {
                     documentError = connectionError
                 }

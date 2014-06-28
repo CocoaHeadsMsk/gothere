@@ -15,6 +15,11 @@
 		96409613195ED769004ECEBF /* gothereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409612195ED769004ECEBF /* gothereTests.swift */; };
 		964861AD195F06C0005D2E89 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964861AC195F06C0005D2E89 /* LocationManager.swift */; };
 		964861B0195F0874005D2E89 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964861AF195F0874005D2E89 /* CoreLocation.framework */; };
+		96536635195F4B400035A8F6 /* blue_hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 96536634195F4B400035A8F6 /* blue_hills.gpx */; };
+		96536637195F4BEE0035A8F6 /* fells_loop.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 96536636195F4BEE0035A8F6 /* fells_loop.gpx */; };
+		96536639195F64530035A8F6 /* GAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96536638195F64530035A8F6 /* GAlertView.swift */; };
+		9653663D195F66AF0035A8F6 /* blur_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 9653663C195F66AF0035A8F6 /* blur_sample.png */; };
+		9653663F195F67AF0035A8F6 /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653663E195F67AF0035A8F6 /* BlurredView.swift */; };
 		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
 		DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */; };
 		E3C69FF0195EDA1F004F8F23 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FEE195EDA1F004F8F23 /* Model.xcdatamodeld */; };
@@ -52,6 +57,11 @@
 		96409612195ED769004ECEBF /* gothereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gothereTests.swift; sourceTree = "<group>"; };
 		964861AC195F06C0005D2E89 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Model/LocationManager.swift; sourceTree = "<group>"; };
 		964861AF195F0874005D2E89 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		96536634195F4B400035A8F6 /* blue_hills.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = blue_hills.gpx; path = ../blue_hills.gpx; sourceTree = "<group>"; };
+		96536636195F4BEE0035A8F6 /* fells_loop.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fells_loop.gpx; path = ../fells_loop.gpx; sourceTree = "<group>"; };
+		96536638195F64530035A8F6 /* GAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAlertView.swift; path = Helpers/GAlertView.swift; sourceTree = "<group>"; };
+		9653663C195F66AF0035A8F6 /* blur_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blur_sample.png; sourceTree = "<group>"; };
+		9653663E195F67AF0035A8F6 /* BlurredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlurredView.swift; path = Helpers/BlurredView.swift; sourceTree = "<group>"; };
 		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointDetailViewController.swift; sourceTree = "<group>"; };
 		E3C69FEF195EDA1F004F8F23 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -89,7 +99,9 @@
 		963B4CDF195EE9330094EAE5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				96536638195F64530035A8F6 /* GAlertView.swift */,
 				963B4CE2195EEC540094EAE5 /* LoadingView.swift */,
+				9653663E195F67AF0035A8F6 /* BlurredView.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -116,6 +128,7 @@
 		964095F9195ED769004ECEBF /* gothere */ = {
 			isa = PBXGroup;
 			children = (
+				9653663C195F66AF0035A8F6 /* blur_sample.png */,
 				E3DB028D195EE9390029663D /* API */,
 				E3C69FED195EDA03004F8F23 /* Model */,
 				963B4CDF195EE9330094EAE5 /* Helpers */,
@@ -131,6 +144,8 @@
 		964095FA195ED769004ECEBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				96536636195F4BEE0035A8F6 /* fells_loop.gpx */,
+				96536634195F4B400035A8F6 /* blue_hills.gpx */,
 				964095FB195ED769004ECEBF /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -253,6 +268,11 @@
 				TargetAttributes = {
 					964095F6195ED769004ECEBF = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9640960B195ED769004ECEBF = {
 						CreatedOnToolsVersion = 6.0;
@@ -286,6 +306,9 @@
 			files = (
 				96409605195ED769004ECEBF /* Main.storyboard in Resources */,
 				96409607195ED769004ECEBF /* Images.xcassets in Resources */,
+				9653663D195F66AF0035A8F6 /* blur_sample.png in Resources */,
+				96536637195F4BEE0035A8F6 /* fells_loop.gpx in Resources */,
+				96536635195F4B400035A8F6 /* blue_hills.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +331,7 @@
 				E3C69FFC195EDD4F004F8F23 /* Route.swift in Sources */,
 				E3C69FFB195EDD4F004F8F23 /* Point.swift in Sources */,
 				E3C69FF7195EDD41004F8F23 /* _User.swift in Sources */,
+				96536639195F64530035A8F6 /* GAlertView.swift in Sources */,
 				E3DB028F195EE9A20029663D /* BackendClient.swift in Sources */,
 				E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */,
 				DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */,
@@ -317,6 +341,7 @@
 				964861AD195F06C0005D2E89 /* LocationManager.swift in Sources */,
 				E3C69FFD195EDD4F004F8F23 /* User.swift in Sources */,
 				E3C69FF0195EDA1F004F8F23 /* Model.xcdatamodeld in Sources */,
+				9653663F195F67AF0035A8F6 /* BlurredView.swift in Sources */,
 				E3DB028C195EE7000029663D /* GTManagedObjectContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = gothere/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -445,6 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = gothere/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
