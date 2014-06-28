@@ -28,17 +28,18 @@ class BackendClient: NSObject {
         let URL = NSURL(string: methodName, relativeToURL: baseURL)
         let task = session.dataTaskWithURL(URL, completionHandler: { (data: NSData!, response: NSURLResponse!, connectionError: NSError!) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                let HTTPResponse = response as NSHTTPURLResponse
                 var documentContents: AnyObject?
                 var documentError: NSError?
-                if !response || !data {
-                    documentError = connectionError
-                }
-                else if HTTPResponse.statusCode != 200 {
-                    documentError = NSError(domain: "BackendClientErrorDomain", code: HTTPResponse.statusCode, userInfo: nil)
+                if let HTTPResponse = response as? NSHTTPURLResponse {
+                    if HTTPResponse.statusCode != 200 {
+                        documentError = NSError(domain: "BackendClientErrorDomain", code: HTTPResponse.statusCode, userInfo: nil)
+                    }
+                    else {
+                        documentContents = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &documentError)
+                    }
                 }
                 else {
-                    documentContents = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &documentError)
+                    documentError = connectionError
                 }
 
                 completionBlock(documentContents, documentError)
