@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964095FC195ED769004ECEBF /* AppDelegate.swift */; };
 		96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964095FE195ED769004ECEBF /* gothere.xcdatamodeld */; };
-		96409602195ED769004ECEBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409601195ED769004ECEBF /* ViewController.swift */; };
+		96409602195ED769004ECEBF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409601195ED769004ECEBF /* MapViewController.swift */; };
 		96409605195ED769004ECEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96409603195ED769004ECEBF /* Main.storyboard */; };
 		96409607195ED769004ECEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96409606195ED769004ECEBF /* Images.xcassets */; };
 		96409613195ED769004ECEBF /* gothereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409612195ED769004ECEBF /* gothereTests.swift */; };
@@ -31,7 +31,7 @@
 		964095FB195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964095FC195ED769004ECEBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964095FF195ED769004ECEBF /* gothere.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gothere.xcdatamodel; sourceTree = "<group>"; };
-		96409601195ED769004ECEBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		96409601195ED769004ECEBF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		96409604195ED769004ECEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96409606195ED769004ECEBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9640960C195ED769004ECEBF /* gothereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gothereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,8 +81,8 @@
 		964095F9195ED769004ECEBF /* gothere */ = {
 			isa = PBXGroup;
 			children = (
+				96B34290195EE1DE00DC086A /* Controllers */,
 				964095FC195ED769004ECEBF /* AppDelegate.swift */,
-				96409601195ED769004ECEBF /* ViewController.swift */,
 				96409603195ED769004ECEBF /* Main.storyboard */,
 				96409606195ED769004ECEBF /* Images.xcassets */,
 				964095FE195ED769004ECEBF /* gothere.xcdatamodeld */,
@@ -114,6 +114,14 @@
 				96409611195ED769004ECEBF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96B34290195EE1DE00DC086A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96409601195ED769004ECEBF /* MapViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96409602195ED769004ECEBF /* ViewController.swift in Sources */,
+				96409602195ED769004ECEBF /* MapViewController.swift in Sources */,
 				96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */,
 				964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */,
 			);
