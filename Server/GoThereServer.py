@@ -255,7 +255,7 @@ if __name__ == '__main__':
 	print 'sys.argv: ',sys.argv
 	parser = argparse.ArgumentParser(description="Server")
 	parser.add_argument('-ip', 	'--Ip_addpres', 	nargs='?', default='127.0.0.1', 							help="Ip Address.", )
-	parser.add_argument('-p', 	'--Port', 			nargs='?', default=8081, 									help="Port.")
+	parser.add_argument('-p', 	'--Port', type=int,			nargs='?', default=8081, 									help="Port.")
 	#parser.print_help()
 
 	args = parser.parse_args()
