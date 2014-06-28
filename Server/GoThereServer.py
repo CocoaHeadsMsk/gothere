@@ -43,7 +43,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		self.send_header('Content-Length', len(js))
 		self.end_headers()
 		self.wfile.write(js)
-		f.close()
+
 
 	def send_RoadDetailRequest(self):
 		#Open the static file requested and send it
@@ -117,7 +117,6 @@ class MyHandler(BaseHTTPRequestHandler):
 		self.send_header('Content-Length', len(js))
 		self.end_headers()
 		self.wfile.write(js)
-		f.close()
 
 	def send_index(self):
 		self.path="/index.html"
@@ -140,25 +139,29 @@ class MyHandler(BaseHTTPRequestHandler):
 				</head>\
 				<body>\
 				\
-				<p> %s </p> \
-				<h1> There is an API:</h1> \
-				<br>an api </br>" % ADDRESS 
+				<p> Server address <br> %s </p> " % ADDRESS 
 		)
 
-		self.wfile.write("<h1>Manage api</h1>\
+
+
+		self.wfile.write("<h1>Server api</h1> \
+							<p>\
+							<a href=RoadDetailRequest>\
+								Click to get RoadDetailRequest\
+							</a>\
+							</p><p>\
+							<a href=RoadListRequest>\
+								Click to get RoadListRequest\
+							</a>\
+						</p>")
+		self.wfile.write("<h1>Manage commands</h1>\
 						<p>\
 							<a href=stop>\
 								Click to Stop!\
 							</a>\
 						</p>")
-
-		'''self.wfile.write("<p>\
-							<a href=update.html>\
-								Click to update content!\
-							</a>\
-						</p>")
 		
-		self.wfile.write("<h1>Itms-service Content </h1> %s"%(itms_services))
+		'''self.wfile.write("<h1>Itms-service Content </h1> %s"%(itms_services))
 		self.wfile.write("<h1>IPA Content</h1> %s"%(other_content)) '''
 		
 		self.wfile.write("\
