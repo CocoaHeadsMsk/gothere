@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		963B4CE3195EEC540094EAE5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B4CE2195EEC540094EAE5 /* LoadingView.swift */; };
 		964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964095FC195ED769004ECEBF /* AppDelegate.swift */; };
-		96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964095FE195ED769004ECEBF /* gothere.xcdatamodeld */; };
 		96409602195ED769004ECEBF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409601195ED769004ECEBF /* MapViewController.swift */; };
 		96409605195ED769004ECEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96409603195ED769004ECEBF /* Main.storyboard */; };
 		96409607195ED769004ECEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96409606195ED769004ECEBF /* Images.xcassets */; };
 		96409613195ED769004ECEBF /* gothereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409612195ED769004ECEBF /* gothereTests.swift */; };
+		964861AD195F06C0005D2E89 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964861AC195F06C0005D2E89 /* LocationManager.swift */; };
+		964861B0195F0874005D2E89 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964861AF195F0874005D2E89 /* CoreLocation.framework */; };
 		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
 		E3C69FF0195EDA1F004F8F23 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FEE195EDA1F004F8F23 /* Model.xcdatamodeld */; };
 		E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FF2195EDD41004F8F23 /* _Point.swift */; };
@@ -41,13 +42,14 @@
 		964095F7195ED769004ECEBF /* gothere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gothere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964095FB195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964095FC195ED769004ECEBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		964095FF195ED769004ECEBF /* gothere.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gothere.xcdatamodel; sourceTree = "<group>"; };
 		96409601195ED769004ECEBF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		96409604195ED769004ECEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96409606195ED769004ECEBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9640960C195ED769004ECEBF /* gothereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gothereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96409611195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96409612195ED769004ECEBF /* gothereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gothereTests.swift; sourceTree = "<group>"; };
+		964861AC195F06C0005D2E89 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Model/LocationManager.swift; sourceTree = "<group>"; };
+		964861AF195F0874005D2E89 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E3C69FEF195EDA1F004F8F23 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E3C69FF2195EDD41004F8F23 /* _Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Point.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964861B0195F0874005D2E89 /* CoreLocation.framework in Frameworks */,
 				96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,9 +93,9 @@
 		964095EE195ED769004ECEBF = {
 			isa = PBXGroup;
 			children = (
-				96B53EED195EDC770054FFE1 /* MapKit.framework */,
 				964095F9195ED769004ECEBF /* gothere */,
 				9640960F195ED769004ECEBF /* gothereTests */,
+				964861AE195F0856005D2E89 /* External */,
 				964095F8195ED769004ECEBF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,7 +118,6 @@
 				964095FC195ED769004ECEBF /* AppDelegate.swift */,
 				96409603195ED769004ECEBF /* Main.storyboard */,
 				96409606195ED769004ECEBF /* Images.xcassets */,
-				964095FE195ED769004ECEBF /* gothere.xcdatamodeld */,
 				964095FA195ED769004ECEBF /* Supporting Files */,
 			);
 			path = gothere;
@@ -146,6 +148,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		964861AE195F0856005D2E89 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				964861AF195F0874005D2E89 /* CoreLocation.framework */,
+				96B53EED195EDC770054FFE1 /* MapKit.framework */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		96B34290195EE1DE00DC086A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +175,7 @@
 				E3C69FFA195EDD4F004F8F23 /* User.swift */,
 				E3DB0289195EDDFF0029663D /* GTPersistentStoreCoordinator.swift */,
 				E3DB028B195EE7000029663D /* GTManagedObjectContext.swift */,
+				964861AC195F06C0005D2E89 /* LocationManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -283,10 +295,10 @@
 				E3C69FFB195EDD4F004F8F23 /* Point.swift in Sources */,
 				E3C69FF7195EDD41004F8F23 /* _User.swift in Sources */,
 				E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */,
-				96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */,
 				E3C69FF6195EDD41004F8F23 /* _Route.swift in Sources */,
 				E3DB028A195EDDFF0029663D /* GTPersistentStoreCoordinator.swift in Sources */,
 				964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */,
+				964861AD195F06C0005D2E89 /* LocationManager.swift in Sources */,
 				E3C69FFD195EDD4F004F8F23 /* User.swift in Sources */,
 				E3C69FF0195EDA1F004F8F23 /* Model.xcdatamodeld in Sources */,
 				E3DB028C195EE7000029663D /* GTManagedObjectContext.swift in Sources */,
@@ -491,16 +503,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		964095FE195ED769004ECEBF /* gothere.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				964095FF195ED769004ECEBF /* gothere.xcdatamodel */,
-			);
-			currentVersion = 964095FF195ED769004ECEBF /* gothere.xcdatamodel */;
-			path = gothere.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		E3C69FEE195EDA1F004F8F23 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

@@ -21,7 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    func mapViewDidFinishLoadingMap(mapView: MKMapView!){
+    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool){
        LoadingView.ShowLoadingView(self, show: false)
     }
 
