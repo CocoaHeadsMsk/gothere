@@ -26,6 +26,7 @@
 		E3C69FFD195EDD4F004F8F23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FFA195EDD4F004F8F23 /* User.swift */; };
 		E3DB028A195EDDFF0029663D /* GTPersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB0289195EDDFF0029663D /* GTPersistentStoreCoordinator.swift */; };
 		E3DB028C195EE7000029663D /* GTManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB028B195EE7000029663D /* GTManagedObjectContext.swift */; };
+		E3DB028F195EE9A20029663D /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB028E195EE9A20029663D /* BackendClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		E3C69FFA195EDD4F004F8F23 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3DB0289195EDDFF0029663D /* GTPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPersistentStoreCoordinator.swift; sourceTree = "<group>"; };
 		E3DB028B195EE7000029663D /* GTManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTManagedObjectContext.swift; sourceTree = "<group>"; };
+		E3DB028E195EE9A20029663D /* BackendClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +116,9 @@
 		964095F9195ED769004ECEBF /* gothere */ = {
 			isa = PBXGroup;
 			children = (
-				963B4CDF195EE9330094EAE5 /* Helpers */,
+				E3DB028D195EE9390029663D /* API */,
 				E3C69FED195EDA03004F8F23 /* Model */,
+				963B4CDF195EE9330094EAE5 /* Helpers */,
 				96B34290195EE1DE00DC086A /* Controllers */,
 				964095FC195ED769004ECEBF /* AppDelegate.swift */,
 				96409603195ED769004ECEBF /* Main.storyboard */,
@@ -191,6 +194,14 @@
 				E3C69FF4195EDD41004F8F23 /* _User.swift */,
 			);
 			name = Generated;
+			sourceTree = "<group>";
+		};
+		E3DB028D195EE9390029663D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E3DB028E195EE9A20029663D /* BackendClient.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +308,7 @@
 				E3C69FFC195EDD4F004F8F23 /* Route.swift in Sources */,
 				E3C69FFB195EDD4F004F8F23 /* Point.swift in Sources */,
 				E3C69FF7195EDD41004F8F23 /* _User.swift in Sources */,
+				E3DB028F195EE9A20029663D /* BackendClient.swift in Sources */,
 				E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */,
 				DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */,
 				E3C69FF6195EDD41004F8F23 /* _Route.swift in Sources */,

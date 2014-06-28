@@ -4,6 +4,9 @@
 import CoreData
 
 enum RouteAttributes: String {
+    case difficulty = "difficulty"
+    case name = "name"
+    case rating = "rating"
     case routeID = "routeID"
 }
 
@@ -39,7 +42,22 @@ class _Route: NSManagedObject {
     /// pragma mark - Properties
 
     @NSManaged
-    var routeID: Int32
+    var difficulty: String
+
+    // func validateDifficulty(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var name: String
+
+    // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var rating: String
+
+    // func validateRating(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var routeID: String
 
     // func validateRouteID(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
