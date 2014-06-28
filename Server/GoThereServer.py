@@ -39,8 +39,8 @@ class MyHandler(BaseHTTPRequestHandler):
                 },
                 {'RoadShot':
 					{	'RoadId':'15',
-						'Name':'Silver Trip',
-                        'Raiting':'**',
+						'Name':'Moskow',
+                        'Raiting':'*****',
                         'Dificult':'5'
                         }
                 }
@@ -58,10 +58,11 @@ class MyHandler(BaseHTTPRequestHandler):
 		#Open the static file requested and send it
 		
 		import json
-		js = json.dumps({"RoadDetailRequest": {
+		if id == 15:
+			js = json.dumps({"RoadDetailRequest": {
 		    "RoadDetail": {
-		      "RoadId": "id",
-		      "Name": "RoadName",
+		      "RoadId": "15",
+		      "Name": "Mail.ru",
 		      "CheckPoints": [
 		        {
 		          "CheckPoint": {

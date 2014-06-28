@@ -9,7 +9,7 @@
 import UIKit
 
 class BackendClient: NSObject {
-    let baseURL = NSURL(string: "http://nikolays-macbook-pro.local:8081/")
+    let baseURL = NSURL(string: "http://mediquest.me:8082/")
 
     class var instance: BackendClient {
         struct Instance {
