@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin python
 
 import argparse
 import httplib
@@ -8,8 +8,17 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import glob
 import socket
 
-global SERVER
-SERVER = "none"
+''' 
+	how to run it from terminal:
+	#!/usr/bin python  #for derbian
+	mkdir GothereServerRuntime
+	cd GothereServerRuntime
+	curl https://raw.githubusercontent.com/CocoaHeadsMsk/gothere/master/Server/GoThereServer.py > GoThereServer.py
+	chmod g+w GoThereServer.py 
+	python GoThereServer.py
+'''
+
+SERVER = None
 ADDRESS = ""
 CUR_DIR=os.path.dirname(sys.argv[0])
 CONTENT_PATH='content'
@@ -45,7 +54,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		self.wfile.write(js)
 
 
-	def send_RoadDetailRequest(self):
+	def send_RoadDetailRequest(self, id):
 		#Open the static file requested and send it
 		
 		import json
@@ -153,7 +162,11 @@ class MyHandler(BaseHTTPRequestHandler):
 							<a href=RoadListRequest>\
 								Click to get RoadListRequest\
 							</a>\
-						</p>")
+								<form method=\"get\" action=\"RoadDetailRequest\">\
+								<input type=\"text\" name=\"Id\" value=\"1\"/>\
+								<input type=\"submit\" name=\"\" />\
+								</form>\
+							</p>")
 		self.wfile.write("<h1>Manage commands</h1>\
 						<p>\
 							<a href=stop>\
@@ -197,8 +210,12 @@ class MyHandler(BaseHTTPRequestHandler):
 				self.send_RoadListRequest()
 				return
 			#TOOD: Add the read id
-			if self.path.endswith("RoadDetailRequest"):
-				self.send_RoadDetailRequest()
+			if self.path.find("RoadDetailRequest?")!=-1:
+				from urlparse import urlparse, parse_qs
+				params = parse_qs(urlparse(self.path).query)
+				print params
+				id = params['Id']
+				self.send_RoadDetailRequest(id)
 				return
 			if self.path.endswith("stop"):
 				print 'SERVER', SERVER
@@ -217,10 +234,10 @@ def run_server(port=8081):
 		#incoming request
 		server = HTTPServer(('', port), MyHandler)
 		print 'Started httpserver on port ', port
-	
+		SERVER = server
 		#Wait forever for incoming htto requests
 		server.serve_forever()
-		SERVER = server
+
 
 	except KeyboardInterrupt:
 		print '^C received, shutting down the web server'
@@ -238,7 +255,7 @@ if __name__ == '__main__':
 	print 'sys.argv: ',sys.argv
 	parser = argparse.ArgumentParser(description="Server")
 	parser.add_argument('-ip', 	'--Ip_addpres', 	nargs='?', default='127.0.0.1', 							help="Ip Address.", )
-	parser.add_argument('-p', 	'--Port', 			nargs='?', default=8081, 									help="Port.")
+	parser.add_argument('-p', 	'--Port', type=int,			nargs='?', default=8081, 									help="Port.")
 	#parser.print_help()
 
 	args = parser.parse_args()

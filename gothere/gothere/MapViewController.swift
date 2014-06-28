@@ -33,14 +33,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locManager.startUpdatingLocation()
         map.showsUserLocation = true
 
-//        BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
-//            if routes {
-//                NSLog("%@", routes.description)
-//            }
-//            else {
-//                NSLog("%@", error.description)
-//            }
-//        })
+        BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
+            if routes {
+                NSLog("%@", routes.description)
+
+                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
+                    if route {
+                        NSLog("%@", route.description)
+                        NSLog("%@", route!.points.description)
+                    }
+                    else {
+                        NSLog("%@", error.description)
+                    }
+                })
+            }
+            else {
+                NSLog("%@", error.description)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {

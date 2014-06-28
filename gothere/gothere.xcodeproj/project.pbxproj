@@ -30,8 +30,10 @@
 		E3C69FFC195EDD4F004F8F23 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FF9195EDD4F004F8F23 /* Route.swift */; };
 		E3C69FFD195EDD4F004F8F23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C69FFA195EDD4F004F8F23 /* User.swift */; };
 		E3DB028A195EDDFF0029663D /* GTPersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB0289195EDDFF0029663D /* GTPersistentStoreCoordinator.swift */; };
-		E3DB028C195EE7000029663D /* GTManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB028B195EE7000029663D /* GTManagedObjectContext.swift */; };
+		E3DB028C195EE7000029663D /* GTManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB028B195EE7000029663D /* GTManagedObjectContext.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E3DB028F195EE9A20029663D /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB028E195EE9A20029663D /* BackendClient.swift */; };
+		E3DC4485195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC4484195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E3DC4488195F37F5006FDEF2 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC4487195F37F5006FDEF2 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,13 @@
 		E3DB0289195EDDFF0029663D /* GTPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPersistentStoreCoordinator.swift; sourceTree = "<group>"; };
 		E3DB028B195EE7000029663D /* GTManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTManagedObjectContext.swift; sourceTree = "<group>"; };
 		E3DB028E195EE9A20029663D /* BackendClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendClient.swift; sourceTree = "<group>"; };
+		E3DC4482195F375C006FDEF2 /* gothere-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gothere-Bridging-Header.h"; sourceTree = "<group>"; };
+		E3DC4483195F375D006FDEF2 /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
+		E3DC4484195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
+		E3DC4486195F37F5006FDEF2 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
+		E3DC4487195F37F5006FDEF2 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
+		E3DC448C195F3839006FDEF2 /* GTMDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		E3DC448D195F3856006FDEF2 /* GTMGarbageCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +155,7 @@
 			children = (
 				96536636195F4BEE0035A8F6 /* fells_loop.gpx */,
 				96536634195F4B400035A8F6 /* blue_hills.gpx */,
+				E3DC4482195F375C006FDEF2 /* gothere-Bridging-Header.h */,
 				964095FB195ED769004ECEBF /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -171,6 +181,7 @@
 		964861AE195F0856005D2E89 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				E3DC4481195F36D9006FDEF2 /* Google Toolbox for Mac */,
 				964861AF195F0874005D2E89 /* CoreLocation.framework */,
 				96B53EED195EDC770054FFE1 /* MapKit.framework */,
 			);
@@ -217,6 +228,20 @@
 				E3DB028E195EE9A20029663D /* BackendClient.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		E3DC4481195F36D9006FDEF2 /* Google Toolbox for Mac */ = {
+			isa = PBXGroup;
+			children = (
+				E3DC4483195F375D006FDEF2 /* GTMNSDictionary+URLArguments.h */,
+				E3DC4484195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m */,
+				E3DC4486195F37F5006FDEF2 /* GTMNSString+URLArguments.h */,
+				E3DC4487195F37F5006FDEF2 /* GTMNSString+URLArguments.m */,
+				E3DC448C195F3839006FDEF2 /* GTMDefines.h */,
+				E3DC448D195F3856006FDEF2 /* GTMGarbageCollection.h */,
+			);
+			name = "Google Toolbox for Mac";
+			path = "Google-Toolbox-for-Mac";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96409602195ED769004ECEBF /* MapViewController.swift in Sources */,
+				E3DC4488195F37F5006FDEF2 /* GTMNSString+URLArguments.m in Sources */,
 				963B4CE3195EEC540094EAE5 /* LoadingView.swift in Sources */,
 				E3C69FFC195EDD4F004F8F23 /* Route.swift in Sources */,
 				E3C69FFB195EDD4F004F8F23 /* Point.swift in Sources */,
@@ -339,6 +365,7 @@
 				E3DB028A195EDDFF0029663D /* GTPersistentStoreCoordinator.swift in Sources */,
 				964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */,
 				964861AD195F06C0005D2E89 /* LocationManager.swift in Sources */,
+				E3DC4485195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m in Sources */,
 				E3C69FFD195EDD4F004F8F23 /* User.swift in Sources */,
 				E3C69FF0195EDA1F004F8F23 /* Model.xcdatamodeld in Sources */,
 				9653663F195F67AF0035A8F6 /* BlurredView.swift in Sources */,
@@ -458,10 +485,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				);
 				INFOPLIST_FILE = gothere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gothere/gothere-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -470,10 +505,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				);
 				INFOPLIST_FILE = gothere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gothere/gothere-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 
 class BackendClient: NSObject {
-    let baseURL = NSURL(string: "http://mediquest.me:8082/")
+    let baseURL = NSURL(string: "http://nikolays-macbook-pro.local:8081/")
 
     class var instance: BackendClient {
         struct Instance {
@@ -20,31 +20,32 @@ class BackendClient: NSObject {
 
     let session: NSURLSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
-    init() {
+    func requestWithMethodName(methodName: String, parameters: NSDictionary = [:]) -> NSURLRequest {
+        var methodNameWithParameters = methodName
+        if parameters.count > 0 {
+            methodNameWithParameters += "?" + parameters.gtm_httpArgumentsString()
+        }
+        let URL = NSURL(string: methodNameWithParameters, relativeToURL: baseURL)
+        let request = NSMutableURLRequest(URL: URL)
 
+        return request
     }
 
-    func getJSONFromMethod(methodName: String, completionBlock: (AnyObject!, NSError?) -> ()) -> () {
-        let URL = NSURL(string: methodName, relativeToURL: baseURL)
-        let task = session.dataTaskWithURL(URL, completionHandler: { (data: NSData!, response: NSURLResponse!, connectionError: NSError!) -> Void in
+    func getJSONWithRequest(request: NSURLRequest, completionBlock: (AnyObject!, NSError?) -> ()) -> () {
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData!, response: NSURLResponse!, connectionError: NSError!) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                let HTTPResponse = response as NSHTTPURLResponse
                 var documentContents: AnyObject?
                 var documentError: NSError?
-                if let r = response {
-                    
+                if let HTTPResponse = response as? NSHTTPURLResponse {
+                    if HTTPResponse.statusCode != 200 {
+                        documentError = NSError(domain: "BackendClientErrorDomain", code: HTTPResponse.statusCode, userInfo: nil)
+                    }
+                    else {
+                        documentContents = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &documentError)
+                    }
                 }
                 else {
-                    NSLog("xxx")
-                }
-                if !response || !data {
                     documentError = connectionError
-                }
-                else if HTTPResponse.statusCode != 200 {
-                    documentError = NSError(domain: "BackendClientErrorDomain", code: HTTPResponse.statusCode, userInfo: nil)
-                }
-                else {
-                    documentContents = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &documentError)
                 }
 
                 completionBlock(documentContents, documentError)
@@ -54,7 +55,8 @@ class BackendClient: NSObject {
     }
 
     func getRoutesListOnCompletion(completionBlock: (Route[]?, NSError?) -> ()) {
-        getJSONFromMethod("RoadListRequest", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+        let request = requestWithMethodName("RoadListRequest")
+        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
             if JSONObject {
                 var parseError: NSError?
                 let routesOrNil = Route.routesList(JSONObject, error: &parseError)
@@ -72,8 +74,25 @@ class BackendClient: NSObject {
         })
     }
 
-    func getRouteDetails() {
-
+    func getRouteDetails(routeID: String, completionBlock: (Route?, NSError?) -> ()) {
+        let request = requestWithMethodName("RoadDetailRequest")
+//        let request = requestWithMethodName("RoadDetailRequest/\(routeID)")
+//        let request = requestWithMethodName("RoadDetailRequest", [ "id" : routeID ])
+        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+            if JSONObject {
+                var parseError: NSError?
+                if let route = Route.routeDetails(JSONObject, error: &parseError) {
+                    GTManagedObjectContext.mainContext.saveOrDie()
+                    completionBlock(route, nil)
+                }
+                else {
+                    completionBlock(nil, parseError)
+                }
+            }
+            else {
+                completionBlock(nil, error)
+            }
+        })
     }
 
     func getStory() {
