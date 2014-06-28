@@ -13,6 +13,7 @@
 		96409605195ED769004ECEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96409603195ED769004ECEBF /* Main.storyboard */; };
 		96409607195ED769004ECEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96409606195ED769004ECEBF /* Images.xcassets */; };
 		96409613195ED769004ECEBF /* gothereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409612195ED769004ECEBF /* gothereTests.swift */; };
+		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9640960C195ED769004ECEBF /* gothereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gothereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96409611195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96409612195ED769004ECEBF /* gothereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gothereTests.swift; sourceTree = "<group>"; };
+		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,7 @@
 		964095EE195ED769004ECEBF = {
 			isa = PBXGroup;
 			children = (
+				96B53EED195EDC770054FFE1 /* MapKit.framework */,
 				964095F9195ED769004ECEBF /* gothere */,
 				9640960F195ED769004ECEBF /* gothereTests */,
 				964095F8195ED769004ECEBF /* Products */,
@@ -401,6 +405,7 @@
 				96409618195ED769004ECEBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96409619195ED769004ECEBF /* Build configuration list for PBXNativeTarget "gothereTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +414,7 @@
 				9640961B195ED769004ECEBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
