@@ -7,7 +7,7 @@
         <!--Map View Controller-->
         <scene sceneID="aYF-Z4-p8z">
             <objects>
-                <viewController title="Map VC" id="Sog-7A-tRO" userLabel="Map View Controller" sceneMemberID="viewController">
+                <viewController title="Map VC" id="Sog-7A-tRO" userLabel="Map View Controller" customClass="MapViewController" customModule="gothere" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oMj-nS-7sW"/>
                         <viewControllerLayoutGuide type="bottom" id="T0h-hf-EnL"/>
@@ -18,6 +18,9 @@
                         <subviews>
                             <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HL2-31-gem">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Sog-7A-tRO" id="WBi-mM-c06"/>
+                                </connections>
                             </mapView>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUN-8t-NVh">
                                 <rect key="frame" x="374" y="270" width="161" height="30"/>

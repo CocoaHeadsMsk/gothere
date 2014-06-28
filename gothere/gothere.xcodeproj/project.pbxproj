@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		963B4CE3195EEC540094EAE5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B4CE2195EEC540094EAE5 /* LoadingView.swift */; };
 		964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964095FC195ED769004ECEBF /* AppDelegate.swift */; };
 		96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 964095FE195ED769004ECEBF /* gothere.xcdatamodeld */; };
 		96409602195ED769004ECEBF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96409601195ED769004ECEBF /* MapViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		963B4CE2195EEC540094EAE5 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Helpers/LoadingView.swift; sourceTree = "<group>"; };
 		964095F7195ED769004ECEBF /* gothere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gothere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964095FB195ED769004ECEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964095FC195ED769004ECEBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		963B4CDF195EE9330094EAE5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				963B4CE2195EEC540094EAE5 /* LoadingView.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		964095EE195ED769004ECEBF = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 		964095F9195ED769004ECEBF /* gothere */ = {
 			isa = PBXGroup;
 			children = (
+				963B4CDF195EE9330094EAE5 /* Helpers */,
 				96B34290195EE1DE00DC086A /* Controllers */,
 				964095FC195ED769004ECEBF /* AppDelegate.swift */,
 				96409603195ED769004ECEBF /* Main.storyboard */,
@@ -224,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96409602195ED769004ECEBF /* MapViewController.swift in Sources */,
+				963B4CE3195EEC540094EAE5 /* LoadingView.swift in Sources */,
 				96409600195ED769004ECEBF /* gothere.xcdatamodeld in Sources */,
 				964095FD195ED769004ECEBF /* AppDelegate.swift in Sources */,
 			);

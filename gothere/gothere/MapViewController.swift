@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
-                            
+class MapViewController: UIViewController, MKMapViewDelegate {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        LoadingView.ShowLoadingView(self, show: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +21,9 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func mapViewDidFinishLoadingMap(mapView: MKMapView!){
+       LoadingView.ShowLoadingView(self, show: false)
+    }
 
 }
 
