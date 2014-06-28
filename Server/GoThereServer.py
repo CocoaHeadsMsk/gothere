@@ -13,7 +13,7 @@ import socket
 	#!/usr/bin python  #for derbian
 	mkdir GothereServerRuntime
 	cd GothereServerRuntime
-	curl https://raw.githubusercontent.com/Chere/master/Server/GoThereServer.py > GoThereServer.py
+	curl https://raw.githubusercontent.com/CocoaHeadsMsk/gothere/master/Server/GoThereServer.py > GoThereServer.py
 	chmod g+w GoThereServer.py 
 	python GoThereServer.py
 '''
