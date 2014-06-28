@@ -12,7 +12,7 @@
         <attribute name="difficulty" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeID" attributeType="String" syncable="YES"/>
         <relationship name="finishedByUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="finishedRoutes" inverseEntity="User" syncable="YES"/>
         <relationship name="points" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Point" inverseName="route" inverseEntity="Point" syncable="YES"/>
     </entity>

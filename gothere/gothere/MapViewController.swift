@@ -16,6 +16,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         LoadingView.ShowLoadingView(self, show: true)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
+            if routes {
+                NSLog("%@", routes.description)
+            }
+            else {
+                NSLog("%@", error.description)
+            }
+        })
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

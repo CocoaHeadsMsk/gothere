@@ -15,7 +15,7 @@ enum RouteRelationships: String {
     case points = "points"
 }
 
-@objc
+@objc(_Route)
 class _Route: NSManagedObject {
 
     /// pragma mark - Class methods

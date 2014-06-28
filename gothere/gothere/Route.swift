@@ -2,7 +2,7 @@
 import Foundation
 import CoreData
 
-@objc
+@objc(Route)
 class Route: _Route {
 
     class func routeWithID(routeID: String) -> Route? {
@@ -10,28 +10,38 @@ class Route: _Route {
         let request = NSFetchRequest(entityName: Route.entityName())
         request.predicate = NSPredicate(format: "routeID == %@", routeID)
         var error: NSError?
-        return context.executeFetchRequest(request, error: &error)[0] as? Route
+        if let results = context.executeFetchRequest(request, error: &error) {
+            assert(results.count < 2, "Duplicate objects in DB")
+            return results.count > 0 ? (results[0] as Route) : nil
+        }
+        else {
+            assert(false, "Invalid request")
+        }
+
+        return nil
     }
 
     class func routeFromJSONObject(JSONObject: AnyObject, inout error: NSError?) -> Route? {
-        if let dictionary = JSONObject as? NSDictionary {
-            if let roadID = dictionary["RoadId"] as? String {
-                var route: Route! = routeWithID(roadID)
-                if !route {
-                    route = Route(managedObjectContext: GTManagedObjectContext.mainContext)
-                    route.routeID = roadID
+        if let rootObject = JSONObject as? NSDictionary {
+            if let roadShot = rootObject["RoadShot"] as? NSDictionary {
+                if let roadID = roadShot["RoadId"] as? String {
+                    var route: Route! = routeWithID(roadID)
+                    if !route {
+                        route = Route(managedObjectContext: GTManagedObjectContext.mainContext)
+                        route.routeID = roadID
+                    }
+                    if let Dificult = roadShot["Dificult"] as? String {
+                        route.difficulty = Dificult
+                    }
+                    if let Raiting = roadShot["Raiting"] as? String {
+                        route.rating = Raiting
+                    }
+                    if let Name = roadShot["Name"] as? String {
+                        route.name = Name
+                    }
+                    
+                    return route
                 }
-                if let Dificult = dictionary["Dificult"] as? String {
-                    route.difficulty = Dificult
-                }
-                if let Raiting = dictionary["Raiting"] as? String {
-                    route.rating = Raiting
-                }
-                if let Name = dictionary["Name"] as? String {
-                    route.name = Name
-                }
-
-                return route
             }
         }
 

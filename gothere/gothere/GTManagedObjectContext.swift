@@ -22,4 +22,11 @@ class GTManagedObjectContext: NSManagedObjectContext {
         }
         return Instance.instance
     }
+
+    func saveOrDie() {
+        var error: NSError?
+        if (!save(&error)) {
+            assert(false, "Error saving to Core Data")
+        }
+    }
 }
