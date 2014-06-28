@@ -20,10 +20,6 @@ class BackendClient: NSObject {
 
     let session: NSURLSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
-    init() {
-
-    }
-
     func getJSONFromMethod(methodName: String, completionBlock: (AnyObject!, NSError?) -> ()) -> () {
         let URL = NSURL(string: methodName, relativeToURL: baseURL)
         let task = session.dataTaskWithURL(URL, completionHandler: { (data: NSData!, response: NSURLResponse!, connectionError: NSError!) -> Void in
@@ -67,8 +63,22 @@ class BackendClient: NSObject {
         })
     }
 
-    func getRouteDetails() {
-
+    func getRouteDetails(completionBlock: (Route?, NSError?) -> ()) {
+        getJSONFromMethod("RoadDetailRequest", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+            if JSONObject {
+                var parseError: NSError?
+                if let route = Route.routeDetails(JSONObject, error: &parseError) {
+                    GTManagedObjectContext.mainContext.saveOrDie()
+                    completionBlock(route, nil)
+                }
+                else {
+                    completionBlock(nil, parseError)
+                }
+            }
+            else {
+                completionBlock(nil, error)
+            }
+        })
     }
 
     func getStory() {

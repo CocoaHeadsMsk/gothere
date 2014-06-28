@@ -23,25 +23,33 @@ class Route: _Route {
 
     class func routeFromJSONObject(JSONObject: AnyObject, inout error: NSError?) -> Route? {
         if let rootObject = JSONObject as? NSDictionary {
-            if let roadShot = rootObject["RoadShot"] as? NSDictionary {
-                if let roadID = roadShot["RoadId"] as? String {
-                    var route: Route! = routeWithID(roadID)
-                    if !route {
-                        route = Route(managedObjectContext: GTManagedObjectContext.mainContext)
-                        route.routeID = roadID
-                    }
-                    if let Dificult = roadShot["Dificult"] as? String {
-                        route.difficulty = Dificult
-                    }
-                    if let Raiting = roadShot["Raiting"] as? String {
-                        route.rating = Raiting
-                    }
-                    if let Name = roadShot["Name"] as? String {
-                        route.name = Name
-                    }
-                    
-                    return route
+            if let roadID = rootObject["RoadId"] as? String {
+                var route: Route! = routeWithID(roadID)
+                if !route {
+                    route = Route(managedObjectContext: GTManagedObjectContext.mainContext)
+                    route.routeID = roadID
                 }
+                if let Dificult = rootObject["Dificult"] as? String {
+                    route.difficulty = Dificult
+                }
+                if let Raiting = rootObject["Raiting"] as? String {
+                    route.rating = Raiting
+                }
+                if let Name = rootObject["Name"] as? String {
+                    route.name = Name
+                }
+                if let CheckPoints = rootObject["CheckPoints"] as? AnyObject[] {
+                    var points = Point[]()
+                    for checkPoint : AnyObject in CheckPoints {
+                        var parseError: NSError?
+                        if let point = Point.pointFromJSONObject(checkPoint, error: &parseError) {
+                            points += point
+                        }
+                    }
+                    route.points = NSOrderedSet(array: points, copyItems: false)
+                }
+
+                return route
             }
         }
 
@@ -55,8 +63,12 @@ class Route: _Route {
                 if let roadList = roadListRequest["RoadList"] as? AnyObject[]  {
                     var routesList = Route[]()
                     for roadShotObject : AnyObject in roadList {
-                        if let route = routeFromJSONObject(roadShotObject, error: &error) {
-                            routesList += route
+                        if let roadShotRoot = roadShotObject as? NSDictionary {
+                            if let roadShot = roadShotRoot["RoadShot"] as? NSDictionary {
+                                if let route = routeFromJSONObject(roadShot, error: &error) {
+                                    routesList += route
+                                }
+                            }
                         }
                     }
                     result = routesList
@@ -67,4 +79,21 @@ class Route: _Route {
         return result
     }
 
+    class func routeDetails(JSONObject: AnyObject, inout error: NSError?) -> Route? {
+        if let rootObject = JSONObject as? NSDictionary {
+            if let RoadDetailRequest = rootObject["RoadDetailRequest"] as? NSDictionary {
+                if let roadDetail : AnyObject = RoadDetailRequest["RoadDetail"]  {
+                    var parseError: NSError?
+                    if let route = routeFromJSONObject(roadDetail, error: &parseError) {
+                        return route
+                    }
+                    else {
+                        error = parseError
+                    }
+                }
+            }
+        }
+
+        return nil
+    }
 }

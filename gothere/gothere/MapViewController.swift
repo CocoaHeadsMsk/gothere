@@ -22,6 +22,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
             if routes {
                 NSLog("%@", routes.description)
+
+                BackendClient.instance.getRouteDetails({ (route: Route?, error: NSError?) in
+                    if route {
+                        NSLog("%@", route.description)
+                        NSLog("%@", route!.points.description)
+                    }
+                    else {
+                        NSLog("%@", error.description)
+                    }
+                })
             }
             else {
                 NSLog("%@", error.description)
