@@ -8,15 +8,16 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import glob
 import socket
 
-ADDRESS =""
+global SERVER
+SERVER = "none"
+ADDRESS = ""
 CUR_DIR=os.path.dirname(sys.argv[0])
 CONTENT_PATH='content'
 
-
 class MyHandler(BaseHTTPRequestHandler):
-
 	def send_RoadListRequest(self):
 		#Open the static file requested and send it
+		
 		import json
 		js = json.dumps({'RoadListRequest':{
 			'RoadList':[
@@ -35,6 +36,7 @@ class MyHandler(BaseHTTPRequestHandler):
                         }
                 }
             ]}})
+		self.path="/index.html"
 		self.send_response(200)
 		self.send_header('Content-type','application/json')
 		self.send_header('Keep-Alive',"timeout=15, max=150")
@@ -43,9 +45,82 @@ class MyHandler(BaseHTTPRequestHandler):
 		self.wfile.write(js)
 		f.close()
 
+	def send_RoadDetailRequest(self):
+		#Open the static file requested and send it
+		
+		import json
+		js = json.dumps({"RoadDetailRequest": {
+		    "RoadDetail": {
+		      "RoadId": "id",
+		      "Name": "RoadName",
+		      "CheckPoints": [
+		        {
+		          "CheckPoint": {
+		            "GeoPoint": {
+		              "lat": 43.45,
+		              "lon": 53.4
+		            },
+		            "url": "http://CheckPointUrl.com:8081",
+		            "StoryId": "StoryId"
+		          }
+		        },
+		        {
+		          "CheckPoint": {
+		            "GeoPoint": {
+		              "lat": 43.55,
+		              "lon": 53.4
+		            },
+		            "url": "http://CheckPointUrl.com:8081",
+		            "StoryId": "StoryId"
+		          }
+		        },
+		        {
+		          "CheckPoint": {
+		            "GeoPoint": {
+		              "lat": 43.45,
+		              "lon": 53.5
+		            },
+		            "url": "http://CheckPointUrl.com:8081",
+		            "StoryId": "StoryId"
+		          }
+		        },
+		        {
+		          "CheckPoint": {
+		            "GeoPoint": {
+		              "lat": 43.46,
+		              "lon": 53.5
+		            },
+		            "url": "http://CheckPointUrl.com:8081",
+		            "StoryId": "StoryId"
+		          }
+		        },
+		        {
+		          "CheckPoint": {
+		            "GeoPoint": {
+		              "lat": 43.46,
+		              "lon": 53.6
+		            },
+		            "url": "http://CheckPointUrl.com:8081",
+		            "StoryId": "StoryId"
+		          }
+		        },
 
+		      ]
+		    }
+		  },
+		  })
+
+		self.path="/index.html"
+		self.send_response(200)
+		self.send_header('Content-type','application/json')
+		self.send_header('Keep-Alive',"timeout=15, max=150")
+		self.send_header('Content-Length', len(js))
+		self.end_headers()
+		self.wfile.write(js)
+		f.close()
 
 	def send_index(self):
+		self.path="/index.html"
 		self.send_response(200)
 		self.send_header('Content-type','text/html')
 		self.end_headers()
@@ -64,9 +139,18 @@ class MyHandler(BaseHTTPRequestHandler):
 					<title>Gothere entrprice distrib</title>\
 				</head>\
 				<body>\
-				<p> %s </p>\
-				<h1>This Srv API content </h1>" % ADDRESS 
+				\
+				<p> %s </p> \
+				<h1> There is an API:</h1> \
+				<br>an api </br>" % ADDRESS 
 		)
+
+		self.wfile.write("<h1>Manage api</h1>\
+						<p>\
+							<a href=stop>\
+								Click to Stop!\
+							</a>\
+						</p>")
 
 		'''self.wfile.write("<p>\
 							<a href=update.html>\
@@ -100,10 +184,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		try:
 			#Check the file extension required and
 			#set the right mime type
-
-			sendReply = False
-			mimetype='text/plain'
-
+			#mimetype='text/plain'
 
 			if self.path.endswith("index.html"):
 				mimetype='text/html'
@@ -112,85 +193,31 @@ class MyHandler(BaseHTTPRequestHandler):
 			if self.path.endswith("RoadListRequest"):
 				self.send_RoadListRequest()
 				return
-
-
-
-			'''if self.path.endswith("update.html"):
-				mimetype='text/html'
-				self.do_update()
-				self.send_index()
-				self.path="/index.html"
+			#TOOD: Add the read id
+			if self.path.endswith("RoadDetailRequest"):
+				self.send_RoadDetailRequest()
 				return
-			if self.path.endswith(".html"):
-				mimetype='text/html'
-				sendReply = True
-			if self.path.endswith(".jpg"):
-				mimetype='image/jpg'
-				sendReply = True
-			if self.path.endswith(".gif"):
-				mimetype='image/gif'
-				sendReply = True
-			if self.path.endswith(".js"):
-				mimetype='application/javascript'
-				sendReply = True
-			if self.path.endswith(".css"):
-				mimetype='text/css'
-				sendReply = True
-			if self.path.endswith(".plist"):
-				mimetype='text/plist'
-				sendReply = True
-			if self.path.endswith(".ipa"):
-				mimetype='application/octet-stream'
-				sendReply=True
-			if self.path.endswith(".txt"):
-				mimetype='text/plain'
-				sendReply=True
-			'''
-			if sendReply == True:
-				#Open the static file requested and send it
-				f = open("%s/%s%s" %(CUR_DIR, CONTENT_PATH, urllib.unquote(self.path)) )
-				self.send_response(200)
-				self.send_header('Content-type',mimetype)
-				self.send_header('Keep-Alive',"timeout=15, max=150")
-				#self.send_header('Content-Length', os.path.getsize("%s/%s%s" %(CUR_DIR, CONTENT_PATH, urllib.unquote(self.path))))
-				self.end_headers()
-				#self.wfile.write(f.read())
-				f.close()
-			return
-
+			if self.path.endswith("stop"):
+				print 'SERVER', SERVER
+				SERVER.socket.close()
+				print 'self.shutdown()'
+				return
 
 		except IOError:
 			self.send_error(404,'File Not Found: %s' % self.path)
 
-
-def run_client(ip_addr = '127.0.0.1', port=8081):
-	#params = urllib.urlencode({'number': 12524, 'type': 'issue', 'action': 'show'})
-	params = urllib.urlencode({'action': 'push'})
-	headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
-
-	conn = httplib.HTTPConnection(ip_addr, port)
-	print('http request are sent...')
-	conn.request("GET", "/?%s"%params, '', headers)
-	#get response from server
-	rsp = conn.getresponse()
-
-	#print server response and data
-	print(rsp.status, rsp.reason)
-	data_received = rsp.read()
-	print(data_received)
-
-	conn.close()
-
 def run_server(port=8081):
+	global SERVER 
 	from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 	try:
 		#Create a web server and define the handler to manage the
 		#incoming request
 		server = HTTPServer(('', port), MyHandler)
-		print 'Started httpserver on port ' , port
+		print 'Started httpserver on port ', port
 	
 		#Wait forever for incoming htto requests
 		server.serve_forever()
+		SERVER = server
 
 	except KeyboardInterrupt:
 		print '^C received, shutting down the web server'
