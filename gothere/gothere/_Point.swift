@@ -8,9 +8,9 @@ enum PointAttributes: String {
     case latitude = "latitude"
     case longitude = "longitude"
     case photoURL = "photoURL"
+    case pointTitle = "pointTitle"
     case pointURL = "pointURL"
     case storyID = "storyID"
-    case pointTitle = "pointTitle"
 }
 
 enum PointRelationships: String {
@@ -64,6 +64,11 @@ class _Point: NSManagedObject {
     // func validatePhotoURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var pointTitle: String
+
+    // func validatePointTitle(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var pointURL: String
 
     // func validatePointURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -73,11 +78,6 @@ class _Point: NSManagedObject {
 
     // func validateStoryID(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged
-    var pointTitle: String
-    
-    // func validatePointTitle(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-    
     /// pragma mark - Relationships
 
     @NSManaged

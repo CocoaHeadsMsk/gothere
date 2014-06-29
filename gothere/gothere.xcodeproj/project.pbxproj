@@ -43,6 +43,8 @@
 		E3DB028F195EE9A20029663D /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB028E195EE9A20029663D /* BackendClient.swift */; };
 		E3DC4485195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC4484195F375D006FDEF2 /* GTMNSDictionary+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E3DC4488195F37F5006FDEF2 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC4487195F37F5006FDEF2 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E3DC4493195FDBB0006FDEF2 /* RoadListRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = E3DC4492195FDBB0006FDEF2 /* RoadListRequest.json */; };
+		E3DC4495195FDD9E006FDEF2 /* RoadDetailRequest_15.json in Resources */ = {isa = PBXBuildFile; fileRef = E3DC4494195FDD9E006FDEF2 /* RoadDetailRequest_15.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		E3DC4487195F37F5006FDEF2 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
 		E3DC448C195F3839006FDEF2 /* GTMDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		E3DC448D195F3856006FDEF2 /* GTMGarbageCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
+		E3DC4492195FDBB0006FDEF2 /* RoadListRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoadListRequest.json; sourceTree = "<group>"; };
+		E3DC4494195FDD9E006FDEF2 /* RoadDetailRequest_15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoadDetailRequest_15.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,7 @@
 		E3DB028D195EE9390029663D /* API */ = {
 			isa = PBXGroup;
 			children = (
+				E3DC4491195FDB78006FDEF2 /* Stubs */,
 				E3DB028E195EE9A20029663D /* BackendClient.swift */,
 			);
 			name = API;
@@ -277,6 +282,15 @@
 			);
 			name = "Google Toolbox for Mac";
 			path = "Google-Toolbox-for-Mac";
+			sourceTree = "<group>";
+		};
+		E3DC4491195FDB78006FDEF2 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				E3DC4492195FDBB0006FDEF2 /* RoadListRequest.json */,
+				E3DC4494195FDD9E006FDEF2 /* RoadDetailRequest_15.json */,
+			);
+			name = Stubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +385,8 @@
 				96409607195ED769004ECEBF /* Images.xcassets in Resources */,
 				9653663D195F66AF0035A8F6 /* blur_sample.png in Resources */,
 				96FB165D195FB91700A92D57 /* rightButtImg.png in Resources */,
+				E3DC4495195FDD9E006FDEF2 /* RoadDetailRequest_15.json in Resources */,
+				E3DC4493195FDBB0006FDEF2 /* RoadListRequest.json in Resources */,
 				96536637195F4BEE0035A8F6 /* fells_loop.gpx in Resources */,
 				96536635195F4B400035A8F6 /* blue_hills.gpx in Resources */,
 				BC2BFE20195FDC1A00DC0E51 /* Default-568h@2x.png in Resources */,

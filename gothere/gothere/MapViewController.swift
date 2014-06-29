@@ -35,7 +35,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if routes {
                 NSLog("%@", routes.description)
 
-                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
+                BackendClient.instance.getRouteDetails("15", { (route: Route?, error: NSError?) in
                     if route {
                         NSLog("%@", route.description)
                         NSLog("%@", route!.points.description)
