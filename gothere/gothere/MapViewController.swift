@@ -131,13 +131,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             var gc = CLGeocoder()
             gc.reverseGeocodeLocation(map.userLocation.location, completionHandler:
                 { (response: AnyObject[]!, error: NSError!) -> Void in
-                    var plArray : NSArray
-                    var placemark : CLPlacemark
-                    plArray = response as NSArray
-                    placemark = plArray.objectAtIndex(0) as CLPlacemark
+                    if response {
+                        var placemark = response[0] as CLPlacemark
+                        self.showAlertWithMessage(
+                            "You are here: " +  placemark.locality + ", " +  placemark.country)
+                    }
+                    else {
+                        self.showAlertWithMessage(
+                            "You are here!")
+                    }
                     locManager.stopUpdatingLocation()
-                    self.showAlertWithMessage(
-                      "You are here: " +  placemark.locality + ", " +  placemark.country)
                 }
             )
         }
