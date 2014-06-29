@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PointDetailViewController: UIViewController {
+class PointDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var buttonHello: UIButton
     @IBOutlet var imageView: UIImageView
@@ -65,4 +65,16 @@ class PointDetailViewController: UIViewController {
         self.navigationController.popViewControllerAnimated(true)
     }
 
+    // UIImagePickerController delegate methods stubs
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        // stub
+    }
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        // stub
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+        // stub
+    }
+    
+    // UINavigationControllerDelegate to be implemented
 }
