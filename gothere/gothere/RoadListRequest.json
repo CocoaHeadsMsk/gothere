@@ -1,18 +1,29 @@
 {
     "RoadListRequest": {
-        "RoadList": [ {
-            "RoadShot": {
-                "Dificult": "Hard(1-5)",
-                "Raiting": "Stars(0-5)",
-                "Name": "RoadName_1",
-                "RoadId": "1"
-            }
-        },
+        "RoadList": [
+            { "RoadShot": {
+                "Dificult": 1,
+                "FinishedByUser": true,
+                "Raiting": "**",
+                "Name": "Silver Trip",
+                "RoadId": "1",
+                "Points" : 11
+            } },
+            { "RoadShot": {
+                "Dificult": 2,
+                "FinishedByUser": false,
+                "Raiting": "***",
+                "Name": "Golden Trip",
+                "RoadId": "2",
+                "Points" : 0
+            } },
         { "RoadShot": {
-            "Dificult": "5",
+            "Dificult": 3,
+            "FinishedByUser": false,
             "Raiting": "*****",
-            "Name": "Moskow",
-            "RoadId": "15"
+            "Name": "GovnoTrip",
+            "RoadId": "3",
+            "Points" : 0
         }
         }
         ]

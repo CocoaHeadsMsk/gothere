@@ -58,8 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 //}stub
             }
         })
-        
-}
+    }
     
     func displayRoute(){ //route: Route
         //stub - выпилить!{

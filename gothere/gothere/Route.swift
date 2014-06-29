@@ -29,7 +29,7 @@ class Route: _Route {
                     route = Route(managedObjectContext: GTManagedObjectContext.mainContext)
                     route.routeID = roadID
                 }
-                if let Dificult = rootObject["Dificult"] as? String {
+                if let Dificult = rootObject["Dificult"] as? NSNumber {
                     route.difficulty = Dificult
                 }
                 if let Raiting = rootObject["Raiting"] as? String {
@@ -47,6 +47,13 @@ class Route: _Route {
                         }
                     }
                     route.points = NSOrderedSet(array: points, copyItems: false)
+                }
+
+                if let FinishedByUser = rootObject["FinishedByUser"] as? NSNumber {
+                    route.finishedByUser = FinishedByUser
+                }
+                if let Points = rootObject["Points"] as? NSNumber {
+                    route.pointsNum = Points
                 }
 
                 return route

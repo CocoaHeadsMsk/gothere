@@ -3,10 +3,6 @@
 
 import CoreData
 
-enum UserRelationships: String {
-    case finishedRoutes = "finishedRoutes"
-}
-
 @objc(_User)
 class _User: NSManagedObject {
 
@@ -34,38 +30,6 @@ class _User: NSManagedObject {
     /// pragma mark - Properties
 
     /// pragma mark - Relationships
-
-    @NSManaged
-    var finishedRoutes: NSSet
-
-    func finishedRoutesSet() -> NSMutableSet! {
-        self.willAccessValueForKey("finishedRoutes")
-
-        let result = self.mutableSetValueForKey("finishedRoutes")
-
-        self.didAccessValueForKey("finishedRoutes")
-        return result
-    }
-
-}
-
-extension _User {
-
-    func addFinishedRoutes(objects: NSSet) {
-        self.finishedRoutesSet().unionSet(objects)
-    }
-
-    func removeFinishedRoutes(objects: NSSet) {
-        self.finishedRoutesSet().minusSet(objects)
-    }
-
-    func addFinishedRoutesObject(value: Route!) {
-        self.finishedRoutesSet().addObject(value)
-    }
-
-    func removeFinishedRoutesObject(value: Route!) {
-        self.finishedRoutesSet().removeObject(value)
-    }
 
 }
 

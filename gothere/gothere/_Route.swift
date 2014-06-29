@@ -5,13 +5,14 @@ import CoreData
 
 enum RouteAttributes: String {
     case difficulty = "difficulty"
+    case finishedByUser = "finishedByUser"
     case name = "name"
+    case pointsNum = "pointsNum"
     case rating = "rating"
     case routeID = "routeID"
 }
 
 enum RouteRelationships: String {
-    case finishedByUser = "finishedByUser"
     case points = "points"
 }
 
@@ -42,14 +43,24 @@ class _Route: NSManagedObject {
     /// pragma mark - Properties
 
     @NSManaged
-    var difficulty: String
+    var difficulty: NSNumber
 
     // func validateDifficulty(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var finishedByUser: NSNumber
+
+    // func validateFinishedByUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var name: String
 
     // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var pointsNum: NSNumber
+
+    // func validatePointsNum(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var rating: String
@@ -62,11 +73,6 @@ class _Route: NSManagedObject {
     // func validateRouteID(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     /// pragma mark - Relationships
-
-    @NSManaged
-    var finishedByUser: User
-
-    // func validateFinishedByUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var points: NSOrderedSet
