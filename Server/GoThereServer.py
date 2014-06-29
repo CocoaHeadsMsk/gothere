@@ -88,8 +88,8 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 55.797302,
 			                    "lon": 37.537745
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
-			                "pointTitle" : "Start of Route",
+			                "url": "https://pp.vk.me/c618822/v618822943/c8ce/Id-OLHRKEv4.jpg",
+			                "pointTitle" : "Offce Mail.ru",
 			                "StoryId": "0"
 			            }
 			        },
@@ -99,7 +99,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 55.799749, 
 			                    "lon": 37.532402
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "https://pp.vk.me/c618822/v618822943/c8d7/5DL8L64xTRo.jpg",
 			                "pointTitle" : "Metro Airport",
 			                "StoryId": "1"
 			            }
@@ -110,7 +110,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 55.802770, 
 			                    "lon": 37.525203
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "https://pp.vk.me/c618822/v618822943/c8dd/vwsUaAkpyi0.jpg",
 			                "pointTitle" : "Cherchel pub",
 			                "StoryId": "2"
 			            }
@@ -121,7 +121,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 55.803923, 
 			                    "lon": 37.514083
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "https://pp.vk.me/c618822/v618822943/c8e6/A3yf_gDY94Q.jpg",
 			                "pointTitle" : "All Saints Church",
 			                "StoryId": "3"
 			            }
@@ -132,7 +132,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 55.811072, 
 			                    "lon": 37.502378
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "https://pp.vk.me/c618822/v618822943/c8ef/x0bQmanN8kk.jpg",
 			                "pointTitle" : "Moscow Aviation Institute",
 			                "StoryId": "4"
 			            }
@@ -155,7 +155,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                },
 			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Tree",
-			                "StoryId": "0"
+			                "StoryId": "5"
 			            }
 			        },
 			        {
@@ -166,7 +166,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                },
 			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Wall",
-			                "StoryId": "1"
+			                "StoryId": "6"
 			            }
 			        },
 			        {
@@ -225,53 +225,53 @@ class MyHandler(BaseHTTPRequestHandler):
 			json.dumps({"StoryRequest": {
 				"Story": {
 						"StoryId": "0",
-						"Title": "Start Route",
-						"Description":"First Point description",
-						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						"Title": "Offce Mail.ru",
+						"Description":"There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, `Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat- pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge. ",
+						"PhotoDescriptionUrl": "https://pp.vk.me/c618822/v618822943/c8ce/Id-OLHRKEv4.jpg"
 						}
 				}
 			}),
 			json.dumps({"StoryRequest": {
 				"Story": {
 						"StoryId": "1",
-						"Title": "First Point",
-						"Description":"First Point description",
-						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						"Title": "Metro Airport",
+						"Description":"The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well. ",
+						"PhotoDescriptionUrl": "https://pp.vk.me/c618822/v618822943/c8d7/5DL8L64xTRo.jpg"
 						}
 				}
 			}),
 			json.dumps({"StoryRequest": {
 				"Story": {
 						"StoryId": "2",
-						"Title": "Area",
-						"Description": "Second Point description",
-						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						"Title": "Cherchel pub",
+						"Description": " Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next. First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs. She took down a jar from one of the shelves as she passed; it was labelled `ORANGE MARMALADE', but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody, so managed to put it into one of the cupboards as she fell past it. ",
+						"PhotoDescriptionUrl": "https://pp.vk.me/c618822/v618822943/c8dd/vwsUaAkpyi0.jpg"
 						}
 				}
 			}),
 			json.dumps({"StoryRequest": {
 				"Story": {
 						"StoryId": "3",
-						"Title": "Ad",
-						"Description": "There Could be your advertizing!",
-						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						"Title": "All Saints Church",
+						"Description": "What a curious feeling!' said Alice; 'I must be shutting up like a telescope.",
+						"PhotoDescriptionUrl": "https://pp.vk.me/c618822/v618822943/c8e6/A3yf_gDY94Q.jpg"
 						}
 				}
 			}),
 			json.dumps({"StoryRequest": {
 				"Story": {
 						"StoryId": "4",
-						"Title": "$",
-						"Description": "Bla Bla Description",
-						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						"Title": "Moscow Aviation Institute",
+						"Description": "'Well!' thought Alice to herself, 'after such a fall as this, I shall think nothing of tumbling down stairs! How brave they'll all think me at home! Why, I wouldn't say anything about it, even if I fell off the top of the house!' (Which was very likely true.) ",
+						"PhotoDescriptionUrl": "https://pp.vk.me/c618822/v618822943/c8ef/x0bQmanN8kk.jpg"
 						}
 				}
 			}),
 			json.dumps({"StoryRequest": {
 				"Story": {
 						"StoryId": "5",
-						"Title": "5",
-						"Description": "description",
+						"Title": "Ad",
+						"Description": "There Could be your advertizing!",
 						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
 						}
 				}
