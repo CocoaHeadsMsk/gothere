@@ -1,6 +1,8 @@
 
 import Foundation
 import CoreData
+import CoreLocation
+import MapKit
 
 @objc(Point)
 class Point: _Point {
@@ -70,6 +72,18 @@ class Point: _Point {
         }
 
         return nil
+    }
+
+    var coordinate: CLLocationCoordinate2D {
+        get {
+            return CLLocationCoordinate2D(latitude: latitude.doubleValue, longitude: longitude.doubleValue)
+        }
+    }
+
+    var mapPoint: MKMapPoint {
+        get {
+            return MKMapPointForCoordinate(coordinate)
+        }
     }
 
 }

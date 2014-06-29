@@ -27,6 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var showRoute = false
 
     var storyId = "0"
+    var route: Route?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
                 BackendClient.instance.getRouteDetails("0", { (route: Route?, error: NSError?) in
                     if route {
+                        self.route = route
 //                        NSLog("%@", route.description)
 //                        NSLog("%@", route!.points.description)
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -85,13 +87,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func showAnnotationsFromSet(set : NSOrderedSet){
         for idx in 0..set.count {
             var point = set.objectAtIndex(idx) as Point
-            var coord = CLLocationCoordinate2DMake(point.latitude.doubleValue, point.longitude.doubleValue)
             var annotation = GPointAnnotation()
-            annotation.setCoordinate(coord)
+            annotation.setCoordinate(point.coordinate)
             annotation.title = point.pointTitle
             annotation.pointId = point.storyID
             map.addAnnotation(annotation)
-            map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.3, 0.3)), animated: true)
+        }
+        if route {
+            let mapRect: MKMapRect = route!.mapRect ? route!.mapRect! : MKMapRectWorld
+            map.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsetsMake(40, 40, 40, 40), animated: true)
         }
     }
     

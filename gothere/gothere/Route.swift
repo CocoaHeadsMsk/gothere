@@ -1,6 +1,8 @@
 
 import Foundation
 import CoreData
+import CoreLocation
+import MapKit
 
 @objc(Route)
 class Route: _Route {
@@ -104,5 +106,31 @@ class Route: _Route {
         }
 
         return nil
+    }
+
+    var mapRect: MKMapRect? {
+        get {
+            if points.count == 0 {
+                return nil
+            }
+            else if let points = points.array as? Point[] {
+                var minPoint = points[0].mapPoint
+                var maxPoint = points[0].mapPoint
+                for point in points {
+                    let mapPoint = point.mapPoint
+                    if mapPoint.x < minPoint.x || mapPoint.y < minPoint.y {
+                        minPoint = mapPoint
+                    }
+                    if mapPoint.x > maxPoint.x || mapPoint.y > maxPoint.y {
+                        maxPoint = mapPoint
+                    }
+                }
+
+                return MKMapRect(origin: MKMapPoint(x: minPoint.x, y: minPoint.y), size: MKMapSize(width: maxPoint.x - minPoint.x, height: maxPoint.y - minPoint.y))
+            }
+            else {
+                return nil
+            }
+        }
     }
 }
