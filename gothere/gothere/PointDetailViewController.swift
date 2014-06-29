@@ -10,8 +10,16 @@ import UIKit
 
 class PointDetailViewController: UIViewController {
 
+    @IBOutlet var viewUnderDescription: UIView
+    
+    @IBOutlet var descriptionTextField: UITextView
     @IBOutlet var buttonHello: UIButton
     @IBOutlet var imageView: UIImageView
+    
+    let  alphaBeforeShow = 0.0 as CGFloat
+    
+    let alphaAfterShow = 1.0 as CGFloat
+    let duration  = 0.50
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +35,20 @@ class PointDetailViewController: UIViewController {
     }
     
     @IBAction func tappedOn(sender: UITapGestureRecognizer) {
-        buttonHello.hidden = !buttonHello.hidden;
+//        var descriptionTextView = UITextView()
+//        var bacgroundColor = [UIColor.color]
+//        descriptionTextView.backgroundColor = [UIColor blackcolor];
+//        descriptionTextView.backgroundColor.
+        viewUnderDescription.alpha = alphaBeforeShow
+        viewUnderDescription.hidden = !viewUnderDescription.hidden
+        UIView.animateWithDuration(duration, {
+            self.viewUnderDescription.alpha = self.alphaAfterShow
+            }, completion: {
+                (value: Bool) in
+                
+            })
+            
+        
         
     }
   
@@ -46,6 +67,7 @@ class PointDetailViewController: UIViewController {
     */
     @IBAction func backTapped(sender: AnyObject) {
         self.navigationController.popViewControllerAnimated(true)
+        
     }
 
 }
