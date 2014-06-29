@@ -8,6 +8,9 @@ class Point: _Point {
         if let pointObject = (JSONObject as? NSDictionary)?["CheckPoint"] as? NSDictionary {
             let point = Point(managedObjectContext: GTManagedObjectContext.mainContext)
 
+            if let title = pointObject["pointTitle"] as? String {
+                point.pointTitle = title
+            }
             if let url = pointObject["url"] as? String {
                 point.pointURL = url
             }
