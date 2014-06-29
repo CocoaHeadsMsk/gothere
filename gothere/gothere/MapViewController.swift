@@ -96,9 +96,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if route {
             let mapRect: MKMapRect = route!.mapRect ? route!.mapRect! : MKMapRectWorld
             map.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsetsMake(40, 40, 40, 40), animated: true)
+            var coordinates: CLLocationCoordinate2D[] = (route!.points.array as Point[]).map { (point: Point) -> CLLocationCoordinate2D in
+                return point.coordinate
+            }
+            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            map.addOverlay(polyline)
         }
     }
     
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.7)
+        renderer.lineWidth = 1
+        return renderer
+    }
+
     func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool){
        LoadingView.ShowLoadingView(self, show: false)
     }
