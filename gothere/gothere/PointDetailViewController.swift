@@ -31,6 +31,23 @@ class PointDetailViewController: UIViewController {
         
     }
   
+    @IBAction func takePhotoTapped(sender: AnyObject) {
+        return;
+//        var picker: UIImagePickerController = UIImagePickerController()
+//        picker.delegate = self;
+//            
+//        // creating overlayView
+//        var overlayView: UIImageView = UIImageView(frame:picker.view.frame)
+//        // letting png transparency be
+//        overlayView.image = UIImage(named:"routeTableRowBack")
+//        overlayView.layer.opaque = false
+//        overlayView.opaque = false
+//        
+//        picker.showsCameraControls = true; // NO
+//        picker.cameraOverlayView = overlayView;
+//        picker.sourceType = UIImagePickerControllerSourceType.Camera;
+//        self.presentModalViewController(picker, animated: true)
+    }
 
     @IBAction func buttonHelloAction(sender: UIButton) {
         println("Hello!")

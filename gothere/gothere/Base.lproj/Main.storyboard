@@ -284,6 +284,10 @@
                                 <state key="normal" backgroundImage="takePhoto">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="takePhotoTapped:" destination="uaH-Ec-ngy" eventType="touchUpInside" id="9WH-jC-5uS"/>
+                                    <segue destination="764-PL-mpz" kind="show" id="Tll-bC-WF4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -313,6 +317,54 @@
             </objects>
             <point key="canvasLocation" x="1647" y="-289"/>
         </scene>
+        <!--Fake Camera View Controller-->
+        <scene sceneID="nYB-ct-FWZ">
+            <objects>
+                <viewController id="764-PL-mpz" customClass="FakeCameraViewController" customModule="gothere" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZWe-fR-iBh"/>
+                        <viewControllerLayoutGuide type="bottom" id="G8t-1I-TCX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TSZ-gV-am1">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoBack" translatesAutoresizingMaskIntoConstraints="NO" id="VQa-fv-a0C">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRB-4u-ZlI">
+                                <rect key="frame" x="20" y="10" width="88" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="fYB-Q2-icL"/>
+                                    <constraint firstAttribute="height" constant="37" id="g2U-dV-mVQ"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Back" backgroundImage="barBack">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="764-PL-mpz" eventType="touchUpInside" id="B49-tX-jgd"/>
+                                    <action selector="backTapped:" destination="uaH-Ec-ngy" eventType="touchUpInside" id="7VA-tj-2Qg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VRB-4u-ZlI" firstAttribute="top" secondItem="TSZ-gV-am1" secondAttribute="top" constant="10" id="Aqu-nA-btg"/>
+                            <constraint firstAttribute="trailing" secondItem="VQa-fv-a0C" secondAttribute="trailing" id="BFd-s2-iZ8"/>
+                            <constraint firstItem="VQa-fv-a0C" firstAttribute="top" secondItem="TSZ-gV-am1" secondAttribute="top" id="KJb-lg-Ocg"/>
+                            <constraint firstItem="VRB-4u-ZlI" firstAttribute="leading" secondItem="TSZ-gV-am1" secondAttribute="leading" constant="20" id="RYa-av-O1K"/>
+                            <constraint firstItem="G8t-1I-TCX" firstAttribute="top" secondItem="VQa-fv-a0C" secondAttribute="bottom" id="UlL-R9-lsw"/>
+                            <constraint firstItem="VQa-fv-a0C" firstAttribute="leading" secondItem="TSZ-gV-am1" secondAttribute="leading" id="ZKo-ek-RQ9"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PwC-9g-xHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277" y="-289"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rCa-Cp-NnE">
             <objects>
@@ -337,11 +389,12 @@
         <image name="bar" width="47" height="37"/>
         <image name="barBack" width="47" height="37"/>
         <image name="difficulty1" width="120" height="40"/>
+        <image name="photoBack" width="568" height="320"/>
         <image name="ratingStar" width="30" height="30"/>
         <image name="routeCompletion" width="40" height="40"/>
         <image name="takePhoto" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x1Y-9V-wlg"/>
+        <segue reference="U5O-Vp-8gh"/>
     </inferredMetricsTieBreakers>
 </document>

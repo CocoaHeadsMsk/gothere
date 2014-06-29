@@ -28,6 +28,7 @@
 		96FB165F195FC1EC00A92D57 /* GAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB165E195FC1EC00A92D57 /* GAnnotationView.swift */; };
 		96FB1661195FCB5500A92D57 /* GPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB1660195FCB5500A92D57 /* GPointAnnotation.swift */; };
 		BC2BFE20195FDC1A00DC0E51 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */; };
+		BC2BFE241960046E00DC0E51 /* FakeCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFE231960046E00DC0E51 /* FakeCameraViewController.swift */; };
 		DE71FBC7195F747E0053E192 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71FBC6195F747E0053E192 /* CustomTableViewCell.swift */; };
 		DE71FBCB195F75220053E192 /* ChooseARouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71FBCA195F75220053E192 /* ChooseARouteTableViewController.swift */; };
 		DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */; };
@@ -84,6 +85,7 @@
 		96FB165E195FC1EC00A92D57 /* GAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAnnotationView.swift; path = Helpers/GAnnotationView.swift; sourceTree = "<group>"; };
 		96FB1660195FCB5500A92D57 /* GPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPointAnnotation.swift; path = Helpers/GPointAnnotation.swift; sourceTree = "<group>"; };
 		BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BC2BFE231960046E00DC0E51 /* FakeCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeCameraViewController.swift; sourceTree = "<group>"; };
 		DE71FBC6195F747E0053E192 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		DE71FBCA195F75220053E192 /* ChooseARouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseARouteTableViewController.swift; sourceTree = "<group>"; };
 		DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointDetailViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				DE71FBCA195F75220053E192 /* ChooseARouteTableViewController.swift */,
 				96409601195ED769004ECEBF /* MapViewController.swift */,
 				DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */,
+				BC2BFE231960046E00DC0E51 /* FakeCameraViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2BFE241960046E00DC0E51 /* FakeCameraViewController.swift in Sources */,
 				96409602195ED769004ECEBF /* MapViewController.swift in Sources */,
 				E3DC4488195F37F5006FDEF2 /* GTMNSString+URLArguments.m in Sources */,
 				963B4CE3195EEC540094EAE5 /* LoadingView.swift in Sources */,
