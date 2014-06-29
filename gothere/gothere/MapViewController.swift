@@ -13,12 +13,21 @@ import CoreLocation
 let locManager = CLLocationManager()
 let pointDetailsSegue = "toPointDetailSegue"
 
+extension UIViewController {
+    func presentError(error: NSError?) {
+        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var map : MKMapView
     @IBOutlet var routeChoosingButton: UIButton
     var showRoute = false
 
     var storyId = "0"
+    var route: Route?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,25 +55,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
             if routes && self.showRoute {
-                NSLog("%@", routes.description)
+//                NSLog("%@", routes.description)
 
                 BackendClient.instance.getRouteDetails("0", { (route: Route?, error: NSError?) in
                     if route {
-                        NSLog("%@", route.description)
-                        NSLog("%@", route!.points.description)
+                        self.route = route
+//                        NSLog("%@", route.description)
+//                        NSLog("%@", route!.points.description)
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                             NSOperationQueue.mainQueue().addOperationWithBlock {
                                 self.showAnnotationsFromSet(route!.points)
                             }
                         }
                     }
-                    else {
-                        NSLog("%@", error.description)
+                    else if error {
+                        self.presentError(error)
                     }
                 })
             }
-            else {
-                NSLog("%@", error.description)
+            else if error {
+                self.presentError(error)
             }
         })
     }
@@ -77,16 +87,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func showAnnotationsFromSet(set : NSOrderedSet){
         for idx in 0..set.count {
             var point = set.objectAtIndex(idx) as Point
-            var coord = CLLocationCoordinate2DMake(point.latitude.doubleValue, point.longitude.doubleValue)
             var annotation = GPointAnnotation()
-            annotation.setCoordinate(coord)
+            annotation.setCoordinate(point.coordinate)
             annotation.title = point.pointTitle
             annotation.pointId = point.storyID
             map.addAnnotation(annotation)
-            map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.3, 0.3)), animated: true)
+        }
+        if route {
+            let mapRect: MKMapRect = route!.mapRect ? route!.mapRect! : MKMapRectWorld
+            map.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsetsMake(40, 40, 40, 40), animated: true)
+            var coordinates: CLLocationCoordinate2D[] = (route!.points.array as Point[]).map { (point: Point) -> CLLocationCoordinate2D in
+                return point.coordinate
+            }
+            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            map.addOverlay(polyline)
         }
     }
     
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.7)
+        renderer.lineWidth = 1
+        return renderer
+    }
+
     func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool){
        LoadingView.ShowLoadingView(self, show: false)
     }

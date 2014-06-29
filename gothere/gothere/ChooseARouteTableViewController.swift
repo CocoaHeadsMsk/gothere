@@ -26,8 +26,8 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
                 self.tableView.reloadData()
 //                NSLog("%@", routes.description)
             }
-            else {
-                NSLog("%@", error.description)
+            else if error {
+                self.presentError(error)
             }
         })
 
