@@ -85,8 +85,8 @@ class MyHandler(BaseHTTPRequestHandler):
 			            {
 			            "CheckPoint": {
 			                "GeoPoint": {
-			                    "lat": 43.45,
-			                    "lon": 53.4
+			                    "lat": 55.797302,
+			                    "lon": 37.537745
 			                },
 			                "url": "http://CheckPointUrl.com:8081",
 			                "pointTitle" : "Start of Route",
@@ -96,22 +96,22 @@ class MyHandler(BaseHTTPRequestHandler):
 			        {
 			            "CheckPoint": {
 			                "GeoPoint": {
-			                    "lat": 43.55,
-			                    "lon": 53.4
+			                    "lat": 55.799749, 
+			                    "lon": 37.532402
 			                },
 			                "url": "http://CheckPointUrl.com:8081",
-			                "pointTitle" : "Next",
+			                "pointTitle" : "Metro Airport",
 			                "StoryId": "1"
 			            }
 			        },
 			        {
 			            "CheckPoint": {
 			                "GeoPoint": {
-			                    "lat": 43.45,
-			                    "lon": 53.5
+			                    "lat": 55.802770, 
+			                    "lon": 37.525203
 			                },
 			                "url": "http://CheckPointUrl.com:8081",
-			                "pointTitle" : "Street",
+			                "pointTitle" : "Cherchel pub",
 			                "StoryId": "2"
 			            }
 			        },
