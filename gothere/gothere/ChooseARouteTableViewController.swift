@@ -13,26 +13,24 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
 
     let countCellInSection = 1
     let CellId = "Cell"
-    
-    var managedObjectContext: NSManagedObjectContext? = nil
-    
-    var dataSource = [
-        "Difficculty": [1,2,3],
-        "FinishedByUser" : [true, false, false],
-        "Name" : ["Silver Trip", "Golden Trip", "GovnoTrip"],
-        "Points" : [11, 0, 0],
-        "Rating" : ["**", "***", "*****"]
-    ]
-    
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
+    let managedObjectContext: NSManagedObjectContext = GTManagedObjectContext.mainContext
+    var routes: Route[]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
+            if routes {
+                self.routes = routes
+                self.tableView.reloadData()
+//                NSLog("%@", routes.description)
+            }
+            else {
+                NSLog("%@", error.description)
+            }
+        })
+
 //        // Do any additional setup after loading the view, typically from a nib.
 //        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 //
@@ -40,10 +38,6 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
 //        self.navigationItem.rightBarButtonItem = addButton
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        if segue.identifier == "showDetail" {
 ////            let indexPath = self.tableView.indexPathForSelectedRow()
@@ -52,36 +46,30 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
 //        }
 //    }
 
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        var count = dataSource["Points"].count
-        return count;
+        if let count = routes?.count {
+            return count
+        }
+        else {
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     
         return countCellInSection
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var difficculty : AnyObject! = dataSource["Difficculty"]
-        var finishedByUser : AnyObject! = dataSource["FinishedByUser"]
-        var name : AnyObject! = dataSource["Name"]
-        var points : AnyObject! = dataSource["Points"]
-        var ratings : AnyObject! = dataSource["Rating"]
-        var rating : String = "\(ratings.objectAtIndex(indexPath.section))" // temporary asterices as a rating thing
-        
-        
         var cell = tableView.dequeueReusableCellWithIdentifier(CellId, forIndexPath: indexPath) as CustomTableViewCell
         
-        cell.pointsCountLabel.text = "\(points.objectAtIndex(indexPath.section))"
-        cell.routeNameLabel.text = "\(name.objectAtIndex(indexPath.section))"
-        cell.setRating(rating);
-        var finished = (finishedByUser as NSArray).objectAtIndex(indexPath.section) as Bool
+        let route = routes![indexPath.section]
+        cell.pointsCountLabel.text = "\(route.pointsNum)"
+        cell.routeNameLabel.text = "\(route.name)"
+        cell.setRating(route.rating);
+        var finished = route.finishedByUser as Bool
         cell.setFinished(finished)
-        cell.setDifficulty((difficculty as NSArray).objectAtIndex(indexPath.section) as Int)
-        
-        
+        cell.setDifficulty(route.difficulty as Int)
+
 //        self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
