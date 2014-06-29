@@ -12,6 +12,7 @@ class PointDetailViewController: UIViewController {
 
     @IBOutlet var viewUnderDescription: UIView
     
+    @IBOutlet var titlePointLabel: UILabel
     @IBOutlet var descriptionTextField: UITextView
     @IBOutlet var buttonHello: UIButton
     @IBOutlet var imageView: UIImageView
@@ -21,6 +22,7 @@ class PointDetailViewController: UIViewController {
     let alphaAfterShow = 1.0 as CGFloat
     let duration  = 0.50
     
+    var imageData : NSData = NSData()
     var storyId = ""
     var titlePoint = ""
     var descriptionPoint = ""
@@ -30,34 +32,41 @@ class PointDetailViewController: UIViewController {
         super.viewDidLoad()
         
         imageView.image = UIImage(named:"1.jpg")
-        
         println("\(storyId)")
-
+        
+        
 
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        println("\(storyId)")
-
+         println("\(storyId)")
         BackendClient.instance.getStory(storyId, completionBlock: { (point: Point?, error: NSError?) -> () in
                         if point {
                             NSLog("%@", point.description)
                             self.descriptionPoint = "\(point!.about)"
                             self.titlePoint = "\(point!.pointTitle)"
                             self.imageName = "\(point!.pointURL)"
+                            var err: NSError?
+                            var  url = NSURL.URLWithString(self.imageName)
+                            self.imageData = NSData.dataWithContentsOfURL(url, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)
                             
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                                // do some async stuff
+                                NSOperationQueue.mainQueue().addOperationWithBlock {
+                                    self.imageView.image = UIImage(data: self.imageData)
+                                    self.descriptionTextField.text = self.descriptionPoint
+                                    self.titlePointLabel.text = self.titlePoint
+                                }
+                            }
                             
                         }
                         else {
                             NSLog("%@", error.description)
                         }
                     })
-        var err: NSError?
-        var  url = NSURL.URLWithString(self.imageName)
-        var imageData :NSData = NSData.dataWithContentsOfURL(url,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)
-        imageView.image = UIImage(data: imageData)
+        
+        
         
     }
     override func didReceiveMemoryWarning() {
