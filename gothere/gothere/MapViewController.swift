@@ -31,11 +31,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locManager.startUpdatingLocation()
         map.showsUserLocation = true
 
+//        BackendClient.instance.getStory("4", completionBlock: { (point: Point?, error: NSError?) -> () in
+//            if point {
+//                NSLog("%@", point.description)
+//            }
+//            else {
+//                NSLog("%@", error.description)
+//            }
+//        })
+
         BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
             if routes {
                 NSLog("%@", routes.description)
 
-                BackendClient.instance.getRouteDetails("15", { (route: Route?, error: NSError?) in
+                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
                     if route {
                         NSLog("%@", route.description)
                         NSLog("%@", route!.points.description)

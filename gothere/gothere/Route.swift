@@ -41,9 +41,11 @@ class Route: _Route {
                 if let CheckPoints = rootObject["CheckPoints"] as? AnyObject[] {
                     var points = Point[]()
                     for checkPoint : AnyObject in CheckPoints {
-                        var parseError: NSError?
-                        if let point = Point.pointFromJSONObject(checkPoint, error: &parseError) {
-                            points += point
+                        if let pointObject : AnyObject = (checkPoint as? NSDictionary)?["CheckPoint"] {
+                            var parseError: NSError?
+                            if let point = Point.pointFromJSONObject(pointObject, error: &parseError) {
+                                points += point
+                            }
                         }
                     }
                     route.points = NSOrderedSet(array: points, copyItems: false)

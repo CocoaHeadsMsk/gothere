@@ -113,7 +113,23 @@ class BackendClient: NSObject {
         })
     }
 
-    func getStory() {
-
+    func getStory(pointID: String, completionBlock: (Point?, NSError?) -> ()) {
+        let request = requestWithMethodName("StoryRequest", parameters: [ "Id" : pointID ])
+        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+            if JSONObject {
+                var parseError: NSError?
+                if let point = Point.pointDetails(JSONObject, error: &parseError) {
+                    GTManagedObjectContext.mainContext.saveOrDie()
+                    completionBlock(point, nil)
+                }
+                else {
+                    completionBlock(nil, parseError)
+                }
+            }
+            else {
+                completionBlock(nil, error)
+            }
+        })
     }
+
 }
