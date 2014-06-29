@@ -54,9 +54,28 @@ class BackendClient: NSObject {
         task.resume()
     }
 
+    func getJSONFromStub(stub: String, completionBlock: (AnyObject!, NSError?) -> ()) {
+        let URL = NSBundle.mainBundle().URLForResource(stub, withExtension: "json")
+        if !URL {
+            completionBlock(nil, NSError.errorWithDomain("BackendClientErrorDomain", code: 0, userInfo: [ NSLocalizedDescriptionKey : "Stub not found" ]))
+        }
+        else {
+            var readError: NSError?
+            if let data = NSData.dataWithContentsOfURL(URL, options: NSDataReadingOptions(), error: &readError) {
+                var JSONError: NSError?
+                let JSONObject : AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &JSONError)
+                completionBlock(JSONObject, JSONError)
+            }
+            else {
+                completionBlock(nil, readError)
+            }
+        }
+    }
+
     func getRoutesListOnCompletion(completionBlock: (Route[]?, NSError?) -> ()) {
-        let request = requestWithMethodName("RoadListRequest")
-        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+//        let request = requestWithMethodName("RoadListRequest")
+//        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+        getJSONFromStub("RoadListRequest", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
             if JSONObject {
                 var parseError: NSError?
                 let routesOrNil = Route.routesList(JSONObject, error: &parseError)
@@ -75,10 +94,11 @@ class BackendClient: NSObject {
     }
 
     func getRouteDetails(routeID: String, completionBlock: (Route?, NSError?) -> ()) {
-        let request = requestWithMethodName("RoadDetailRequest")
+//        let request = requestWithMethodName("RoadDetailRequest")
 //        let request = requestWithMethodName("RoadDetailRequest/\(routeID)")
-//        let request = requestWithMethodName("RoadDetailRequest", [ "id" : routeID ])
-        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+//        let request = requestWithMethodName("RoadDetailRequest", parameters: [ "Id" : routeID ])
+//        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+        getJSONFromStub("RoadDetailRequest_\(routeID)", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
             if JSONObject {
                 var parseError: NSError?
                 if let route = Route.routeDetails(JSONObject, error: &parseError) {

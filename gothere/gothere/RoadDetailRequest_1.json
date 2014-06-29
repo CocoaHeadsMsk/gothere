@@ -1,0 +1,65 @@
+{"RoadDetailRequest": {
+    "RoadDetail": {
+        "RoadId": "1",
+        "Name": "Mail.ru",
+        "CheckPoints": [
+            {
+            "CheckPoint": {
+                "GeoPoint": {
+                    "lat": 43.45,
+                    "lon": 53.4
+                },
+                "url": "http://CheckPointUrl.com:8081",
+                "pointTitle" : "Столовая",
+                "StoryId": "StoryId"
+            }
+        },
+        {
+            "CheckPoint": {
+                "GeoPoint": {
+                    "lat": 43.55,
+                    "lon": 53.4
+                },
+                "url": "http://CheckPointUrl.com:8081",
+                "pointTitle" : "Столовая",
+                "StoryId": "StoryId"
+            }
+        },
+        {
+            "CheckPoint": {
+                "GeoPoint": {
+                    "lat": 43.45,
+                    "lon": 53.5
+                },
+                "url": "http://CheckPointUrl.com:8081",
+                "pointTitle" : "Столовая",
+                "StoryId": "StoryId"
+            }
+        },
+        {
+            "CheckPoint": {
+                "GeoPoint": {
+                    "lat": 43.46,
+                    "lon": 53.5
+                },
+                "url": "http://CheckPointUrl.com:8081",
+                "pointTitle" : "Столовая",
+                "StoryId": "StoryId"
+            }
+        },
+        {
+            "CheckPoint": {
+                "GeoPoint": {
+                    "lat": 43.46,
+                    "lon": 53.6
+                },
+                "url": "http://CheckPointUrl.com:8081",
+                "pointTitle" : "Столовая",
+                "StoryId": "StoryId"
+            }
+        }
+
+        ]
+    }
+}
+}
