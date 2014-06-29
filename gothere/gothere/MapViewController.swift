@@ -18,6 +18,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet var routeChoosingButton: UIButton
     var showRoute = false
 
+    var routeId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -53,6 +55,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                             NSOperationQueue.mainQueue().addOperationWithBlock {
                                 self.showAnnotationsFromSet(route!.points)
+                                self.routeId = route!.routeID;
                             }
                         }
                     }
@@ -158,7 +161,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue.identifier == "toPointDetailSegue"{
+            var destonationController  = segue.destinationViewController as PointDetailViewController
+            destonationController.id =  self.routeId
+            
+        }
 
     }
-
+  
 }

@@ -21,10 +21,13 @@ class PointDetailViewController: UIViewController {
     let alphaAfterShow = 1.0 as CGFloat
     let duration  = 0.50
     
+    var id = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imageView.image = UIImage(named:"1.jpg")
+        println("\(id)")
 
         // Do any additional setup after loading the view.
     }
