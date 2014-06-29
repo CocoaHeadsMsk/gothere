@@ -8,6 +8,10 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import glob
 import socket
 
+import sys 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 ''' 
 	how to run it from terminal:
 	#!/usr/bin python  #for derbian
@@ -41,7 +45,7 @@ class MyHandler(BaseHTTPRequestHandler):
 					{	'RoadId':'15',
 						'Name':'Moskow',
                         'Raiting':'*****',
-                        'Dificult':'5'
+                        'Dificult':'2'
                         }
                 }
             ]}})
@@ -54,12 +58,12 @@ class MyHandler(BaseHTTPRequestHandler):
 		self.wfile.write(js)
 
 
-	def send_RoadDetailRequest(self, id):
+	def send_RoadDetailRequest(self, idr):
 		#Open the static file requested and send it
 		
 		import json
-		if id == 15:
-			js = json.dumps({"RoadDetailRequest": {
+		data = [
+			json.dumps({"RoadDetailRequest": {
 		    "RoadDetail": {
 		      "RoadId": "15",
 		      "Name": "Mail.ru",
@@ -71,7 +75,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		              "lon": 53.4
 		            },
 		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "StoryId"
+		            "StoryId": "1"
 		          }
 		        },
 		        {
@@ -81,7 +85,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		              "lon": 53.4
 		            },
 		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "StoryId"
+		            "StoryId": "2"
 		          }
 		        },
 		        {
@@ -91,7 +95,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		              "lon": 53.5
 		            },
 		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "StoryId"
+		            "StoryId": "3"
 		          }
 		        },
 		        {
@@ -101,7 +105,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		              "lon": 53.5
 		            },
 		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "StoryId"
+		            "StoryId": "4"
 		          }
 		        },
 		        {
@@ -111,7 +115,7 @@ class MyHandler(BaseHTTPRequestHandler):
 		              "lon": 53.6
 		            },
 		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "StoryId"
+		            "StoryId": "5"
 		          }
 		        },
 
@@ -119,14 +123,93 @@ class MyHandler(BaseHTTPRequestHandler):
 		    }
 		  },
 		  })
+		]
 
 		self.path="/index.html"
 		self.send_response(200)
 		self.send_header('Content-type','application/json')
 		self.send_header('Keep-Alive',"timeout=15, max=150")
-		self.send_header('Content-Length', len(js))
+		
+		self.send_header('Content-Length', len(data[idr]))
 		self.end_headers()
-		self.wfile.write(js)
+		self.wfile.write(data[idr])
+
+	def send_StoryRequest(self, ids):
+		#Open the static file requested and send it
+		import json
+		data = [
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "0",
+						"Title": "Start Route",
+						"Description":"First Point description",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			}),
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "1",
+						"Title": "First Point",
+						"Description":"First Point description",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			}),
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "2",
+						"Title": "Area",
+						"Description": "Second Point description",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			}),
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "3",
+						"Title": "Ad",
+						"Description": "There Could be your advertizing!",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			}),
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "4",
+						"Title": "$",
+						"Description": "Bla Bla Description",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			}),
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "5",
+						"Title": "5",
+						"Description": "description",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			}),
+			json.dumps({"StoryRequest": {
+				"Story": {
+						"StoryId": "6",
+						"Title": "6",
+						"Description": "description",
+						"PhotoDescriptionUrl": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg"
+						}
+				}
+			})
+		]
+
+		self.path="/index.html"
+		self.send_response(200)
+		self.send_header('Content-type','application/json')
+		self.send_header('Keep-Alive',"timeout=15, max=150")
+		self.send_header('Content-Length', len(data[ids]))
+		self.end_headers()
+		self.wfile.write(data[ids])
 
 	def send_index(self):
 		self.path="/index.html"
@@ -148,20 +231,25 @@ class MyHandler(BaseHTTPRequestHandler):
 					<title>Gothere entrprice distrib</title>\
 				</head>\
 				<body>\
-				\
 				<p> Server address <br> %s </p> " % ADDRESS 
 		)
 
-
-
 		self.wfile.write("<h1>Server api</h1> \
 							<p>\
+							<text> RoadListRequest\n RoadDetailRequest\n StoryRequest\
+							</text>\
 							</p><p>\
 							<a href=RoadListRequest>\
 								Click to get RoadListRequest\
 							</a>\
+							<text> <br> RoadDetailRequest <br> </text>\
 								<form method=\"get\" action=\"RoadDetailRequest\">\
-								<input type=\"text\" name=\"Id\" value=\"1\"/>\
+								<input type=\"text\" name=\"Id\" value=\"0\"/>\
+								<input type=\"submit\" name=\"\" />\
+								</form>\
+								<text><br> StoryRequest <br> </text>\
+								<form method=\"get\" action=\"StoryRequest\">\
+								<input type=\"text\" name=\"Id\" value=\"0\"/>\
 								<input type=\"submit\" name=\"\" />\
 								</form>\
 							</p>")
@@ -207,13 +295,19 @@ class MyHandler(BaseHTTPRequestHandler):
 			if self.path.endswith("RoadListRequest"):
 				self.send_RoadListRequest()
 				return
-			#TOOD: Add the read id
 			if self.path.find("RoadDetailRequest?")!=-1:
 				from urlparse import urlparse, parse_qs
 				params = parse_qs(urlparse(self.path).query)
 				print params
-				id = params['Id']
-				self.send_RoadDetailRequest(id)
+				id = params['Id'][0]
+				self.send_RoadDetailRequest(int (id))
+				return
+			if self.path.find("StoryRequest?")!=-1:
+				from urlparse import urlparse, parse_qs
+				params = parse_qs(urlparse(self.path).query)
+				print params
+				id = params['Id'][0]
+				self.send_StoryRequest(int(id))
 				return
 			if self.path.endswith("stop"):
 				print 'SERVER', SERVER
@@ -221,8 +315,8 @@ class MyHandler(BaseHTTPRequestHandler):
 				print 'self.shutdown()'
 				return
 
-		except IOError:
-			self.send_error(404,'File Not Found: %s' % self.path)
+		except Exception, e :
+			self.send_error(404,'internal error: %s\n %s' % (self.path, e) )
 
 def run_server(port=8081):
 	global SERVER 
