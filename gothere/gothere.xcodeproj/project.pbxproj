@@ -20,6 +20,7 @@
 		96536639195F64530035A8F6 /* GAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96536638195F64530035A8F6 /* GAlertView.swift */; };
 		9653663D195F66AF0035A8F6 /* blur_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 9653663C195F66AF0035A8F6 /* blur_sample.png */; };
 		9653663F195F67AF0035A8F6 /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653663E195F67AF0035A8F6 /* BlurredView.swift */; };
+		96A09093195FDE010063C4C3 /* GAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96A09092195FDE010063C4C3 /* GAlertView.xib */; };
 		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
 		96FB165A195FB71F00A92D57 /* pin@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB1658195FB71F00A92D57 /* pin@1x.png */; };
 		96FB165B195FB71F00A92D57 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB1659195FB71F00A92D57 /* pin@2x.png */; };
@@ -71,6 +72,7 @@
 		96536638195F64530035A8F6 /* GAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAlertView.swift; path = Helpers/GAlertView.swift; sourceTree = "<group>"; };
 		9653663C195F66AF0035A8F6 /* blur_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blur_sample.png; sourceTree = "<group>"; };
 		9653663E195F67AF0035A8F6 /* BlurredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlurredView.swift; path = Helpers/BlurredView.swift; sourceTree = "<group>"; };
+		96A09092195FDE010063C4C3 /* GAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAlertView.xib; path = Helpers/GAlertView.xib; sourceTree = "<group>"; };
 		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		96FB1658195FB71F00A92D57 /* pin@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@1x.png"; sourceTree = "<group>"; };
 		96FB1659195FB71F00A92D57 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				9653663E195F67AF0035A8F6 /* BlurredView.swift */,
 				96FB165E195FC1EC00A92D57 /* GAnnotationView.swift */,
 				96FB1660195FCB5500A92D57 /* GPointAnnotation.swift */,
+				96A09092195FDE010063C4C3 /* GAlertView.xib */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			files = (
 				96FB165B195FB71F00A92D57 /* pin@2x.png in Resources */,
 				96409605195ED769004ECEBF /* Main.storyboard in Resources */,
+				96A09093195FDE010063C4C3 /* GAlertView.xib in Resources */,
 				96FB165A195FB71F00A92D57 /* pin@1x.png in Resources */,
 				96409607195ED769004ECEBF /* Images.xcassets in Resources */,
 				9653663D195F66AF0035A8F6 /* blur_sample.png in Resources */,

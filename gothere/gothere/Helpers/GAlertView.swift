@@ -12,16 +12,14 @@ class GAlertView: UIView {
 
     init(frame: CGRect) {
         super.init(frame: frame)
-        // Initialization code
     }
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect)
-    {
-        // Drawing code
+    init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+        var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
+        effectView.frame = bounds
+        addSubview(effectView)
     }
-    */
 
 }
