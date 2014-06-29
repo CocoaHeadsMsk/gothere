@@ -106,8 +106,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.7)
-        renderer.lineWidth = 1
+        renderer.strokeColor = UIColor(red: 0.7, green: 0, blue: 0.5, alpha: 0.8)
+        renderer.lineWidth = 5
         return renderer
     }
 
