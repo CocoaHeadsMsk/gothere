@@ -68,13 +68,19 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
         var difficculty : AnyObject! = dataSource["Difficculty"]
         var finishedByUser : AnyObject! = dataSource["FinishedByUser"]
         var name : AnyObject! = dataSource["Name"]
-        var points :AnyObject! = dataSource["Points"]
-        var rating : AnyObject! = dataSource["Rating"]
+        var points : AnyObject! = dataSource["Points"]
+        var ratings : AnyObject! = dataSource["Rating"]
+        var rating : String = "\(ratings.objectAtIndex(indexPath.section))" // temporary asterices as a rating thing
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(CellId,forIndexPath: indexPath) as CustomTableViewCell
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(CellId, forIndexPath: indexPath) as CustomTableViewCell
         
         cell.pointsCountLabel.text = "\(points.objectAtIndex(indexPath.section))"
         cell.routeNameLabel.text = "\(name.objectAtIndex(indexPath.section))"
+        cell.setRating(rating);
+        var finished = (finishedByUser as NSArray).objectAtIndex(indexPath.section) as Bool
+        cell.setFinished(finished)
+        cell.setDifficulty((difficculty as NSArray).objectAtIndex(indexPath.section) as Int)
         
         
 //        self.configureCell(cell, atIndexPath: indexPath)
