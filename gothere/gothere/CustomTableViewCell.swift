@@ -30,19 +30,36 @@ class CustomTableViewCell: UITableViewCell {
     
     func setRating(rating: String) {
         var rate: Int = rating.utf16count;
-        rating5star.hidden = rate < 5
-        rating4star.hidden = rate < 4
-        rating3star.hidden = rate < 3
-        rating2star.hidden = rate < 2
-        rating1star.hidden = rate < 1
+        var star: UIImage = UIImage(named: "ratingStarOff")
+        var starOn: UIImage = UIImage(named: "ratingStar")
+        if rate > 4 {
+            star = starOn
+        }
+        rating5star.image = star
+        if rate == 4 {
+            star = starOn
+        }
+        rating4star.image = star
+        if rate == 3 {
+            star = starOn
+        }
+        rating3star.image = star
+        if rate == 2 {
+            star = starOn
+        }
+        rating2star.image = star
+        if rate == 1 {
+            star = starOn
+        }
+        rating1star.image = star
     }
     
     func setFinished(finished: Bool) {
         if (finished) {
-            finishedByUserLabel.text = "Завершено"
+            finishedByUserLabel.text = "Finished"
             completionMark.image = UIImage(named:"routeCompletionSelectected")
         } else {
-            finishedByUserLabel.text = "Не завершено"
+            finishedByUserLabel.text = "Not finished"
             completionMark.image = UIImage(named:"routeCompletion")
         }
     }
