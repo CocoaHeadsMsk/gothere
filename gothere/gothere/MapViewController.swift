@@ -15,7 +15,8 @@ let locManager = CLLocationManager()
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var map : MKMapView
     @IBOutlet var routeChoosingButton: UIButton
-    
+    var showRoute = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         locManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -29,10 +30,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         locManager.startUpdatingLocation()
-        map.showsUserLocation = true
+        map.showsUserLocation = !showRoute
 
         BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
-            if routes {
+            if routes && self.showRoute {
                 NSLog("%@", routes.description)
 
                 BackendClient.instance.getRouteDetails("15", { (route: Route?, error: NSError?) in
@@ -40,14 +41,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         NSLog("%@", route.description)
                         NSLog("%@", route!.points.description)
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                            // do some async stuff
                             NSOperationQueue.mainQueue().addOperationWithBlock {
-                                // do some main thread stuff stuff
-//                                self.displayRoute()
                                 self.showAnnotationsFromSet(route!.points)
                             }
                         }
-
                     }
                     else {
                         NSLog("%@", error.description)
@@ -56,30 +53,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
             else {
                 NSLog("%@", error.description)
-                //stub{
-                //}stub
             }
         })
-    }
-    
-    func displayRoute(){ //route: Route
-//        //stub - выпилить!{
-//        var coord = CLLocationCoordinate2DMake(48.7170295, 15.17416)
-//        var annotation = GPointAnnotation()
-//        annotation.setCoordinate(coord)
-//        annotation.title = "Wolfenshtein Castle"
-//        annotation.pointId =
-//        map.addAnnotation(annotation)
-//        
-//        coord = CLLocationCoordinate2DMake(48.7870295, 15.11416)
-//        var annotation1 = GPointAnnotation()
-//        annotation1.setCoordinate(coord)
-//        annotation1.title = "Near that Wolfenshtein Castle"
-//        annotation1.pointId = 13
-//        map.addAnnotation(annotation1)
-        
-//        map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.2, 0.2)), animated: true)
-        //}stub
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +71,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotation.title = point.pointTitle
             annotation.pointId = point.storyID
             map.addAnnotation(annotation)
+            map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.3, 0.3)), animated: true)
         }
     }
     
@@ -148,7 +124,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     plArray = response as NSArray
                     placemark = plArray.objectAtIndex(0) as CLPlacemark
                     locManager.stopUpdatingLocation()
-                    //stub
                     self.showAlertWithMessage(
                       "You are here: " +  placemark.locality + ", " +  placemark.country)
                 }
@@ -162,9 +137,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func showAlertWithMessage(message: NSString){
         let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Choose a route >", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.routeChoosingButton.hidden = false
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+
     }
 
 }

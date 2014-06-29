@@ -197,7 +197,7 @@
                                     <outlet property="delegate" destination="Sog-7A-tRO" id="WBi-mM-c06"/>
                                 </connections>
                             </mapView>
-                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUN-8t-NVh">
+                            <button hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUN-8t-NVh">
                                 <rect key="frame" x="385" y="263" width="163" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="BT5-k6-HiU"/>
