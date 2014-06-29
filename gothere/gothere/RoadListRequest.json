@@ -1,19 +1,20 @@
-{"RoadListRequest":
-    {"RoadList":
-        [
-         {"RoadShot":
-         {"Dificult": "Hard(1-5)",
-         "Raiting": "Stars(0-5)",
-         "Name": "RoadName_1",
-         "RoadId": "1"}
-         },
-         {"RoadShot":
-         {"Dificult": "5",
-         "Raiting": "*****",
-         "Name": "Moskow",
-         "RoadId": "15"
-         }
-         }
-         ]
+{
+    "RoadListRequest": {
+        "RoadList": [ {
+            "RoadShot": {
+                "Dificult": "Hard(1-5)",
+                "Raiting": "Stars(0-5)",
+                "Name": "RoadName_1",
+                "RoadId": "1"
+            }
+        },
+        { "RoadShot": {
+            "Dificult": "5",
+            "Raiting": "*****",
+            "Name": "Moskow",
+            "RoadId": "15"
+        }
+        }
+        ]
     }
 }
