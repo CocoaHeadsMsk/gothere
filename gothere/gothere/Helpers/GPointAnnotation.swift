@@ -10,10 +10,10 @@ import UIKit
 import MapKit
 
 class GPointAnnotation: MKPointAnnotation {
-    var pointId: Int
+    var pointId: NSString
     
     init (){
-        pointId = 0
+        pointId = ""
         super.init()
     }
 }

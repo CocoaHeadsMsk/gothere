@@ -39,6 +39,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     if route {
                         NSLog("%@", route.description)
                         NSLog("%@", route!.points.description)
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                            // do some async stuff
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                // do some main thread stuff stuff
+//                                self.displayRoute()
+                                self.showAnnotationsFromSet(route!.points)
+                            }
+                        }
+
                     }
                     else {
                         NSLog("%@", error.description)
@@ -48,35 +57,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             else {
                 NSLog("%@", error.description)
                 //stub{
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    // do some async stuff
-                    NSOperationQueue.mainQueue().addOperationWithBlock {
-                        // do some main thread stuff stuff
-                        self.displayRoute()
-                    }
-                }
                 //}stub
             }
         })
     }
     
     func displayRoute(){ //route: Route
-        //stub - выпилить!{
-        var coord = CLLocationCoordinate2DMake(48.7170295, 15.17416)
-        var annotation = GPointAnnotation()
-        annotation.setCoordinate(coord)
-        annotation.title = "Wolfenshtein Castle"
-        annotation.pointId = 17
-        map.addAnnotation(annotation)
+//        //stub - выпилить!{
+//        var coord = CLLocationCoordinate2DMake(48.7170295, 15.17416)
+//        var annotation = GPointAnnotation()
+//        annotation.setCoordinate(coord)
+//        annotation.title = "Wolfenshtein Castle"
+//        annotation.pointId =
+//        map.addAnnotation(annotation)
+//        
+//        coord = CLLocationCoordinate2DMake(48.7870295, 15.11416)
+//        var annotation1 = GPointAnnotation()
+//        annotation1.setCoordinate(coord)
+//        annotation1.title = "Near that Wolfenshtein Castle"
+//        annotation1.pointId = 13
+//        map.addAnnotation(annotation1)
         
-        coord = CLLocationCoordinate2DMake(48.7870295, 15.11416)
-        var annotation1 = GPointAnnotation()
-        annotation1.setCoordinate(coord)
-        annotation1.title = "Near that Wolfenshtein Castle"
-        annotation1.pointId = 13
-        map.addAnnotation(annotation1)
-        
-        map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.2, 0.2)), animated: true)
+//        map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.2, 0.2)), animated: true)
         //}stub
     }
 
@@ -89,9 +91,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for idx in 0..set.count {
             var point = set.objectAtIndex(idx) as Point
             var coord = CLLocationCoordinate2DMake(point.latitude.doubleValue, point.longitude.doubleValue)
-            var annotation = MKPointAnnotation()
+            var annotation = GPointAnnotation()
             annotation.setCoordinate(coord)
             annotation.title = point.pointTitle
+            annotation.pointId = point.storyID
             map.addAnnotation(annotation)
         }
     }
@@ -127,7 +130,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!){
         //stub
-        if ((view as GAnnotationView).annotation as GPointAnnotation).pointId == 17{
+        if ((view as GAnnotationView).annotation as GPointAnnotation).pointId == ""{
             println("1")
         }
     }
