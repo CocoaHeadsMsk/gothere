@@ -156,9 +156,6 @@ class MyHandler(BaseHTTPRequestHandler):
 
 		self.wfile.write("<h1>Server api</h1> \
 							<p>\
-							<a href=RoadDetailRequest>\
-								Click to get RoadDetailRequest\
-							</a>\
 							</p><p>\
 							<a href=RoadListRequest>\
 								Click to get RoadListRequest\
