@@ -13,7 +13,8 @@ import CoreLocation
 let locManager = CLLocationManager()
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-@IBOutlet var map : MKMapView
+    @IBOutlet var map : MKMapView
+    @IBOutlet var routeChoosingButton: UIButton
     
     override func viewDidLoad() {
         super.viewDidLoad()

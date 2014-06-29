@@ -22,6 +22,7 @@
 		9653663F195F67AF0035A8F6 /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653663E195F67AF0035A8F6 /* BlurredView.swift */; };
 		96A09093195FDE010063C4C3 /* GAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96A09092195FDE010063C4C3 /* GAlertView.xib */; };
 		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
+		BC2BFE20195FDC1A00DC0E51 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */; };
 		96FB165A195FB71F00A92D57 /* pin@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB1658195FB71F00A92D57 /* pin@1x.png */; };
 		96FB165B195FB71F00A92D57 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB1659195FB71F00A92D57 /* pin@2x.png */; };
 		96FB165D195FB91700A92D57 /* rightButtImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB165C195FB91700A92D57 /* rightButtImg.png */; };
@@ -74,6 +75,7 @@
 		9653663E195F67AF0035A8F6 /* BlurredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlurredView.swift; path = Helpers/BlurredView.swift; sourceTree = "<group>"; };
 		96A09092195FDE010063C4C3 /* GAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAlertView.xib; path = Helpers/GAlertView.xib; sourceTree = "<group>"; };
 		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		96FB1658195FB71F00A92D57 /* pin@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@1x.png"; sourceTree = "<group>"; };
 		96FB1659195FB71F00A92D57 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		96FB165C195FB91700A92D57 /* rightButtImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightButtImg.png; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		964095F9195ED769004ECEBF /* gothere */ = {
 			isa = PBXGroup;
 			children = (
+				BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */,
 				DE71FBC5195F746B0053E192 /* CustomCells */,
 				9653663C195F66AF0035A8F6 /* blur_sample.png */,
 				E3DB028D195EE9390029663D /* API */,
@@ -370,6 +373,7 @@
 				96FB165D195FB91700A92D57 /* rightButtImg.png in Resources */,
 				96536637195F4BEE0035A8F6 /* fells_loop.gpx in Resources */,
 				96536635195F4B400035A8F6 /* blue_hills.gpx in Resources */,
+				BC2BFE20195FDC1A00DC0E51 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +528,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,7 +547,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

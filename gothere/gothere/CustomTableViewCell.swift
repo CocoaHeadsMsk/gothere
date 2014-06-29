@@ -38,11 +38,12 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func setFinished(finished: Bool) {
-        completionMark.highlighted = finished
         if (finished) {
             finishedByUserLabel.text = "Завершено"
+            completionMark.image = UIImage(named:"routeCompletionSelectected")
         } else {
             finishedByUserLabel.text = "Не завершено"
+            completionMark.image = UIImage(named:"routeCompletion")
         }
     }
 

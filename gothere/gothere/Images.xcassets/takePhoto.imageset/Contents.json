@@ -3,7 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "gtSplashiPhone5.png"
+      "filename" : "takePhoto@1x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "takePhoto@2x.png"
     }
   ],
   "info" : {
