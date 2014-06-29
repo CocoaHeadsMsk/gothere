@@ -44,5 +44,8 @@ class PointDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func backTapped(sender: AnyObject) {
+        self.navigationController.popViewControllerAnimated(true)
+    }
 
 }
