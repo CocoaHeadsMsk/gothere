@@ -32,23 +32,37 @@ class MyHandler(BaseHTTPRequestHandler):
 		#Open the static file requested and send it
 		
 		import json
-		js = json.dumps({'RoadListRequest':{
-			'RoadList':[
-				{'RoadShot':
-					{	'RoadId':'1',
-						'Name':'RoadName_1',
-                        'Raiting':'Stars(0-5)',
-                        'Dificult':'Hard(1-5)'
-                        }
-                },
-                {'RoadShot':
-					{	'RoadId':'15',
-						'Name':'Moskow',
-                        'Raiting':'*****',
-                        'Dificult':'2'
-                        }
-                }
-            ]}})
+		js = json.dumps({
+		    "RoadListRequest": {
+		        "RoadList": [
+		            { "RoadShot": {
+		                "Dificult": 1,
+		                "FinishedByUser": True,
+		                "Raiting": "**",
+		                "Name": "Moscow casual",
+		                "RoadId": "1",
+		                "Points" : 11
+		            } },
+		            { "RoadShot": {
+		                "Dificult": 2,
+		                "FinishedByUser": False,
+		                "Raiting": "***",
+		                "Name": "Moscow urban",
+		                "RoadId": "2",
+		                "Points" : 0
+		            } },
+		        { "RoadShot": {
+		            "Dificult": 3,
+		            "FinishedByUser": False,
+		            "Raiting": "*****",
+		            "Name": "Thrash adventures",
+		            "RoadId": "3",
+		            "Points" : 0
+		        }
+		        }
+		        ]
+		    }
+			})
 		self.path="/index.html"
 		self.send_response(200)
 		self.send_header('Content-type','application/json')
@@ -63,66 +77,136 @@ class MyHandler(BaseHTTPRequestHandler):
 		
 		import json
 		data = [
-			json.dumps({"RoadDetailRequest": {
-		    "RoadDetail": {
-		      "RoadId": "15",
-		      "Name": "Mail.ru",
-		      "CheckPoints": [
-		        {
-		          "CheckPoint": {
-		            "GeoPoint": {
-		              "lat": 43.45,
-		              "lon": 53.4
-		            },
-		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "1"
-		          }
-		        },
-		        {
-		          "CheckPoint": {
-		            "GeoPoint": {
-		              "lat": 43.55,
-		              "lon": 53.4
-		            },
-		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "2"
-		          }
-		        },
-		        {
-		          "CheckPoint": {
-		            "GeoPoint": {
-		              "lat": 43.45,
-		              "lon": 53.5
-		            },
-		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "3"
-		          }
-		        },
-		        {
-		          "CheckPoint": {
-		            "GeoPoint": {
-		              "lat": 43.46,
-		              "lon": 53.5
-		            },
-		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "4"
-		          }
-		        },
-		        {
-		          "CheckPoint": {
-		            "GeoPoint": {
-		              "lat": 43.46,
-		              "lon": 53.6
-		            },
-		            "url": "http://CheckPointUrl.com:8081",
-		            "StoryId": "5"
-		          }
-		        },
+				json.dumps({"RoadDetailRequest": {
+			    "RoadDetail": {
+			        "RoadId": "0",
+			        "Name": "Mail.ru",
+			        "CheckPoints": [
+			            {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.45,
+			                    "lon": 53.4
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Start of Route",
+			                "StoryId": "0"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.55,
+			                    "lon": 53.4
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Next",
+			                "StoryId": "1"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.45,
+			                    "lon": 53.5
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Street",
+			                "StoryId": "2"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.46,
+			                    "lon": 53.5
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Road",
+			                "StoryId": "3"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.46,
+			                    "lon": 53.6
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Building",
+			                "StoryId": "4"
+			            }
+			        }
 
-		      ]
-		    }
-		  },
-		  })
+			        ]
+			    }
+			}
+			}),
+			json.dumps({"RoadDetailRequest": {
+			    "RoadDetail": {
+			        "RoadId": "1",
+			        "Name": "Mail.ru",
+			        "CheckPoints": [
+			            {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.45,
+			                    "lon": 53.4
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Tree",
+			                "StoryId": "0"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.55,
+			                    "lon": 53.4
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Wall",
+			                "StoryId": "1"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.45,
+			                    "lon": 53.5
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Way",
+			                "StoryId": "2"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.46,
+			                    "lon": 53.5
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Sky",
+			                "StoryId": "3"
+			            }
+			        },
+			        {
+			            "CheckPoint": {
+			                "GeoPoint": {
+			                    "lat": 43.46,
+			                    "lon": 53.6
+			                },
+			                "url": "http://CheckPointUrl.com:8081",
+			                "pointTitle" : "Place",
+			                "StoryId": "4"
+			            }
+			        }
+
+			        ]
+			    }
+			}
+			})
 		]
 
 		self.path="/index.html"
@@ -201,7 +285,9 @@ class MyHandler(BaseHTTPRequestHandler):
 						}
 				}
 			})
+
 		]
+
 
 		self.path="/index.html"
 		self.send_response(200)
