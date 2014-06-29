@@ -14,33 +14,48 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
     let countCellInSection = 1
     let CellId = "Cell"
     
+    var difficcult = ["",""]
+    var finishedByUser=[]
+    var name=[]
+    var points=[]
+    var rating=[]
+    
     var managedObjectContext: NSManagedObjectContext? = nil
-    
-    var dataSource = [
-        "Difficculty": [1,2,3],
-        "FinishedByUser" : [true, false, false],
-        "Name" : ["Silver Trip", "Golden Trip", "GovnoTrip"],
-        "Points" : [11, 0, 0],
-        "Rating" : ["**", "***", "*****"]
-    ]
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        // Do any additional setup after loading the view, typically from a nib.
-//        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-//
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-//        self.navigationItem.rightBarButtonItem = addButton
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        locManager.startUpdatingLocation()
+        var i = 0
+        BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
+            if routes {
+                NSLog("%@", routes.description)
+                self.difficcult(i) = "\(routes.description)"
+                
+                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
+                    if route {
+                        NSLog("%@", route.description)
+                        NSLog("%@", route!.points.description)
+                    }
+                    else {
+                        NSLog("%@", error.description)
+                    }
+                    })
+            }
+            else {
+                NSLog("%@", error.description)
+            }
+            })
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,11 +80,7 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var difficculty : AnyObject! = dataSource["Difficculty"]
-        var finishedByUser : AnyObject! = dataSource["FinishedByUser"]
-        var name : AnyObject! = dataSource["Name"]
-        var points :AnyObject! = dataSource["Points"]
-        var rating : AnyObject! = dataSource["Rating"]
+        
         
         var cell = tableView.dequeueReusableCellWithIdentifier(CellId,forIndexPath: indexPath) as CustomTableViewCell
         
