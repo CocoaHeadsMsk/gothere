@@ -22,28 +22,53 @@ class PointDetailViewController: UIViewController {
     let duration  = 0.50
     
     var storyId = ""
+    var titlePoint = ""
+    var descriptionPoint = ""
+    var imageName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imageView.image = UIImage(named:"1.jpg")
+        
         println("\(storyId)")
+
 
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        println("\(storyId)")
+
+        BackendClient.instance.getStory(storyId, completionBlock: { (point: Point?, error: NSError?) -> () in
+                        if point {
+                            NSLog("%@", point.description)
+                            self.descriptionPoint = "\(point!.about)"
+                            self.titlePoint = "\(point!.pointTitle)"
+                            self.imageName = "\(point!.pointURL)"
+                            
+                            
+                        }
+                        else {
+                            NSLog("%@", error.description)
+                        }
+                    })
+        var err: NSError?
+        var  url = NSURL.URLWithString(self.imageName)
+        var imageData :NSData = NSData.dataWithContentsOfURL(url,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)
+        imageView.image = UIImage(data: imageData)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func tappedOn(sender: UITapGestureRecognizer) {
-//        var descriptionTextView = UITextView()
-//        var bacgroundColor = [UIColor.color]
-//        descriptionTextView.backgroundColor = [UIColor blackcolor];
-//        descriptionTextView.backgroundColor.
-        viewUnderDescription.alpha = alphaBeforeShow
-        viewUnderDescription.hidden = !viewUnderDescription.hidden
+        
+        self.viewUnderDescription.hidden = !self.viewUnderDescription.hidden
+
         UIView.animateWithDuration(duration, {
             self.viewUnderDescription.alpha = self.alphaAfterShow
             }, completion: {
@@ -74,5 +99,7 @@ class PointDetailViewController: UIViewController {
 
         
     }
+    
+    
 
 }
