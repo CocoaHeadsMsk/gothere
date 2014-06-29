@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet var routeChoosingButton: UIButton
     var showRoute = false
 
-    var routeId = ""
+    var storyId = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                             NSOperationQueue.mainQueue().addOperationWithBlock {
                                 self.showAnnotationsFromSet(route!.points)
-                                self.routeId = route!.routeID;
                             }
                         }
                     }
@@ -120,9 +119,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!){
         //stub
         if ((view as GAnnotationView).annotation as GPointAnnotation).pointId == ""{
-            println("1")
         }
-        
+        self.storyId = ((view as GAnnotationView).annotation as GPointAnnotation).pointId
         performSegueWithIdentifier(pointDetailsSegue, sender: self)
     }
 
@@ -160,13 +158,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if segue.identifier == "toPointDetailSegue"{
-            var destonationController  = segue.destinationViewController as PointDetailViewController
-            destonationController.id =  self.routeId
-            
-        }
 
+        
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue != nil && segue.identifier != nil && segue.identifier == "toPointDetailSegue"{
+        var destinationController  = segue.destinationViewController as PointDetailViewController
+            destinationController.storyId =  self.storyId
+        }
     }
   
 }

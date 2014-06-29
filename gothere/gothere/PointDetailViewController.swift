@@ -21,13 +21,13 @@ class PointDetailViewController: UIViewController {
     let alphaAfterShow = 1.0 as CGFloat
     let duration  = 0.50
     
-    var id = ""
+    var storyId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imageView.image = UIImage(named:"1.jpg")
-        println("\(id)")
+        println("\(storyId)")
 
         // Do any additional setup after loading the view.
     }
@@ -70,6 +70,8 @@ class PointDetailViewController: UIViewController {
     */
     @IBAction func backTapped(sender: AnyObject) {
         self.navigationController.popViewControllerAnimated(true)
+        println("\(storyId)")
+
         
     }
 
