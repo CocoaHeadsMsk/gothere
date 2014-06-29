@@ -26,8 +26,8 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
                 self.tableView.reloadData()
 //                NSLog("%@", routes.description)
             }
-            else {
-                NSLog("%@", error.description)
+            else if error {
+                self.presentError(error)
             }
         })
 
@@ -99,6 +99,9 @@ class ChooseARouteTableViewController: UITableViewController, NSFetchedResultsCo
 //        cell.textLabel.text = object.valueForKey("timeStamp").description
     }
 
-
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        var mapController = segue.destinationViewController as MapViewController
+        mapController.showRoute = true;
+    }
 }
 

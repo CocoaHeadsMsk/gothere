@@ -73,9 +73,9 @@ class BackendClient: NSObject {
     }
 
     func getRoutesListOnCompletion(completionBlock: (Route[]?, NSError?) -> ()) {
-//        let request = requestWithMethodName("RoadListRequest")
-//        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
-        getJSONFromStub("RoadListRequest", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+        let request = requestWithMethodName("RoadListRequest")
+        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+//        getJSONFromStub("RoadListRequest", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
             if JSONObject {
                 var parseError: NSError?
                 let routesOrNil = Route.routesList(JSONObject, error: &parseError)
@@ -94,11 +94,9 @@ class BackendClient: NSObject {
     }
 
     func getRouteDetails(routeID: String, completionBlock: (Route?, NSError?) -> ()) {
-//        let request = requestWithMethodName("RoadDetailRequest")
-//        let request = requestWithMethodName("RoadDetailRequest/\(routeID)")
-//        let request = requestWithMethodName("RoadDetailRequest", parameters: [ "Id" : routeID ])
-//        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
-        getJSONFromStub("RoadDetailRequest_\(routeID)", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+        let request = requestWithMethodName("RoadDetailRequest", parameters: [ "Id" : routeID ])
+        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+//        getJSONFromStub("RoadDetailRequest_\(routeID)", completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
             if JSONObject {
                 var parseError: NSError?
                 if let route = Route.routeDetails(JSONObject, error: &parseError) {
@@ -115,7 +113,23 @@ class BackendClient: NSObject {
         })
     }
 
-    func getStory() {
-
+    func getStory(pointID: String, completionBlock: (Point?, NSError?) -> ()) {
+        let request = requestWithMethodName("StoryRequest", parameters: [ "Id" : pointID ])
+        getJSONWithRequest(request, completionBlock: { (JSONObject: AnyObject!, error: NSError?) -> () in
+            if JSONObject {
+                var parseError: NSError?
+                if let point = Point.pointDetails(JSONObject, error: &parseError) {
+                    GTManagedObjectContext.mainContext.saveOrDie()
+                    completionBlock(point, nil)
+                }
+                else {
+                    completionBlock(nil, parseError)
+                }
+            }
+            else {
+                completionBlock(nil, error)
+            }
+        })
     }
+
 }

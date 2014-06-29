@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HYo-Fg-Hax">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HYo-Fg-Hax">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
         <!--ChooseA Route Table View Controller-->
@@ -165,7 +165,7 @@
                                     <outlet property="rating4star" destination="aCl-rs-iG3" id="2Nw-z1-kGs"/>
                                     <outlet property="rating5star" destination="RiL-Ap-HxF" id="YZe-sj-Fpb"/>
                                     <outlet property="routeNameLabel" destination="5sk-ps-Xfd" id="gGN-Ht-Xmw"/>
-                                    <segue destination="uaH-Ec-ngy" kind="show" id="U5O-Vp-8gh"/>
+                                    <segue destination="Sog-7A-tRO" kind="show" id="hC8-Wt-uhg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -177,7 +177,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDy-14-uBE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957" y="-566"/>
+            <point key="canvasLocation" x="-379" y="259"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="aYF-Z4-p8z">
@@ -197,7 +197,7 @@
                                     <outlet property="delegate" destination="Sog-7A-tRO" id="WBi-mM-c06"/>
                                 </connections>
                             </mapView>
-                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUN-8t-NVh">
+                            <button hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUN-8t-NVh">
                                 <rect key="frame" x="385" y="263" width="163" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="BT5-k6-HiU"/>
@@ -209,7 +209,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Cii-ID-Mmp" kind="show" id="dYA-DW-jKa"/>
+                                    <segue destination="Cii-ID-Mmp" kind="show" identifier="to" id="dYA-DW-jKa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -226,7 +226,7 @@
                     <connections>
                         <outlet property="map" destination="HL2-31-gem" id="vmp-8F-JL7"/>
                         <outlet property="routeChoosingButton" destination="AUN-8t-NVh" id="1IA-mW-OFO"/>
-                        <segue destination="uaH-Ec-ngy" kind="custom" identifier="toPointDetailSegue" id="x1Y-9V-wlg"/>
+                        <segue destination="uaH-Ec-ngy" kind="show" identifier="toPointDetailSegue" id="x1Y-9V-wlg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tE-3S-VVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,6 +289,26 @@
                                     <segue destination="764-PL-mpz" kind="show" id="Tll-bC-WF4"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-1l-piu">
+                                <rect key="frame" x="0.0" y="168" width="568" height="152"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-ff-RHY">
+                                        <rect key="frame" x="0.0" y="24" width="568" height="128"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmN-Rf-WZG">
+                                        <rect key="frame" x="8" y="0.0" width="553" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -304,7 +324,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="buttonHello" destination="u2V-Wm-QiI" id="fO7-Zs-LTi"/>
+                        <outlet property="descriptionTextField" destination="h1L-ff-RHY" id="Pa7-zn-lrK"/>
                         <outlet property="imageView" destination="Coi-yK-lzV" id="T5q-vk-Lcc"/>
+                        <outlet property="titlePointLabel" destination="nmN-Rf-WZG" id="nln-bn-Zem"/>
+                        <outlet property="viewUnderDescription" destination="FDK-1l-piu" id="0H3-L2-Gy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72U-9b-ewm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -315,7 +338,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1647" y="-289"/>
+            <point key="canvasLocation" x="455" y="191"/>
         </scene>
         <!--Fake Camera View Controller-->
         <scene sceneID="nYB-ct-FWZ">
@@ -395,6 +418,6 @@
         <image name="takePhoto" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U5O-Vp-8gh"/>
+        <segue reference="hC8-Wt-uhg"/>
     </inferredMetricsTieBreakers>
 </document>

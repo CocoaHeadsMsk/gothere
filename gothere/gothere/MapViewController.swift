@@ -11,10 +11,23 @@ import MapKit
 import CoreLocation
 
 let locManager = CLLocationManager()
+let pointDetailsSegue = "toPointDetailSegue"
+
+extension UIViewController {
+    func presentError(error: NSError?) {
+        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var map : MKMapView
     @IBOutlet var routeChoosingButton: UIButton
+    var showRoute = false
+
+    var storyId = "0"
+    var route: Route?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,55 +42,41 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         locManager.startUpdatingLocation()
-        map.showsUserLocation = true
+        map.showsUserLocation = !showRoute
+
+//        BackendClient.instance.getStory("4", completionBlock: { (point: Point?, error: NSError?) -> () in
+//            if point {
+//                NSLog("%@", point.description)
+//            }
+//            else {
+//                NSLog("%@", error.description)
+//            }
+//        })
 
         BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
-            if routes {
-                NSLog("%@", routes.description)
+            if routes && self.showRoute {
+//                NSLog("%@", routes.description)
 
-                BackendClient.instance.getRouteDetails("15", { (route: Route?, error: NSError?) in
+                BackendClient.instance.getRouteDetails("0", { (route: Route?, error: NSError?) in
                     if route {
-                        NSLog("%@", route.description)
-                        NSLog("%@", route!.points.description)
+                        self.route = route
+//                        NSLog("%@", route.description)
+//                        NSLog("%@", route!.points.description)
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                self.showAnnotationsFromSet(route!.points)
+                            }
+                        }
                     }
-                    else {
-                        NSLog("%@", error.description)
+                    else if error {
+                        self.presentError(error)
                     }
                 })
             }
-            else {
-                NSLog("%@", error.description)
-                //stub{
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    // do some async stuff
-                    NSOperationQueue.mainQueue().addOperationWithBlock {
-                        // do some main thread stuff stuff
-                        self.displayRoute()
-                    }
-                }
-                //}stub
+            else if error {
+                self.presentError(error)
             }
         })
-    }
-    
-    func displayRoute(){ //route: Route
-        //stub - выпилить!{
-        var coord = CLLocationCoordinate2DMake(48.7170295, 15.17416)
-        var annotation = GPointAnnotation()
-        annotation.setCoordinate(coord)
-        annotation.title = "Wolfenshtein Castle"
-        annotation.pointId = 17
-        map.addAnnotation(annotation)
-        
-        coord = CLLocationCoordinate2DMake(48.7870295, 15.11416)
-        var annotation1 = GPointAnnotation()
-        annotation1.setCoordinate(coord)
-        annotation1.title = "Near that Wolfenshtein Castle"
-        annotation1.pointId = 13
-        map.addAnnotation(annotation1)
-        
-        map.setRegion(MKCoordinateRegionMake(coord, MKCoordinateSpanMake(0.2, 0.2)), animated: true)
-        //}stub
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,14 +87,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func showAnnotationsFromSet(set : NSOrderedSet){
         for idx in 0..set.count {
             var point = set.objectAtIndex(idx) as Point
-            var coord = CLLocationCoordinate2DMake(point.latitude.doubleValue, point.longitude.doubleValue)
-            var annotation = MKPointAnnotation()
-            annotation.setCoordinate(coord)
+            var annotation = GPointAnnotation()
+            annotation.setCoordinate(point.coordinate)
             annotation.title = point.pointTitle
+            annotation.pointId = point.storyID
             map.addAnnotation(annotation)
+        }
+        if route {
+            let mapRect: MKMapRect = route!.mapRect ? route!.mapRect! : MKMapRectWorld
+            map.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsetsMake(40, 40, 40, 40), animated: true)
+            var coordinates: CLLocationCoordinate2D[] = (route!.points.array as Point[]).map { (point: Point) -> CLLocationCoordinate2D in
+                return point.coordinate
+            }
+            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            map.addOverlay(polyline)
         }
     }
     
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor(red: 0.7, green: 0, blue: 0.5, alpha: 0.8)
+        renderer.lineWidth = 5
+        return renderer
+    }
+
     func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool){
        LoadingView.ShowLoadingView(self, show: false)
     }
@@ -114,7 +129,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         var aview = GAnnotationView(annotation: annotation, reuseIdentifier: "defAnnotId")
         aview.canShowCallout = true
-        var butt = UIButton.buttonWithType(UIButtonType.ContactAdd) as UIButton
+        var butt = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
         butt.addTarget(self, action: "calloutTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         aview.rightCalloutAccessoryView = butt as UIView
         aview.image = UIImage(named: "pin.png")
@@ -127,9 +142,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!){
         //stub
-        if ((view as GAnnotationView).annotation as GPointAnnotation).pointId == 17{
-            println("1")
+        if ((view as GAnnotationView).annotation as GPointAnnotation).pointId == ""{
         }
+        self.storyId = ((view as GAnnotationView).annotation as GPointAnnotation).pointId
+        performSegueWithIdentifier(pointDetailsSegue, sender: self)
     }
 
     
@@ -140,14 +156,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             var gc = CLGeocoder()
             gc.reverseGeocodeLocation(map.userLocation.location, completionHandler:
                 { (response: AnyObject[]!, error: NSError!) -> Void in
-                    var plArray : NSArray
-                    var placemark : CLPlacemark
-                    plArray = response as NSArray
-                    placemark = plArray.objectAtIndex(0) as CLPlacemark
+                    if response {
+                        var placemark = response[0] as CLPlacemark
+                        self.showAlertWithMessage(
+                            "You are here: " +  placemark.locality + ", " +  placemark.country)
+                    }
+                    else {
+                        self.showAlertWithMessage(
+                            "You are here!")
+                    }
                     locManager.stopUpdatingLocation()
-                    //stub
-                    self.showAlertWithMessage(
-                      "You are here: " +  placemark.locality + ", " +  placemark.country)
                 }
             )
         }
@@ -159,9 +177,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func showAlertWithMessage(message: NSString){
         let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Choose a route >", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.routeChoosingButton.hidden = false
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
 
+        
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue != nil && segue.identifier != nil && segue.identifier == "toPointDetailSegue"{
+        var destinationController  = segue.destinationViewController as PointDetailViewController
+            destinationController.storyId =  self.storyId
+        }
+    }
+  
 }
