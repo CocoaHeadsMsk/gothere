@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 
 let locManager = CLLocationManager()
+let pointDetailsSegue = "toPointDetailSegue"
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var map : MKMapView
@@ -118,6 +119,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if ((view as GAnnotationView).annotation as GPointAnnotation).pointId == ""{
             println("1")
         }
+        
+        performSegueWithIdentifier(pointDetailsSegue, sender: self)
     }
 
     
