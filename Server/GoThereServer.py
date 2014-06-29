@@ -118,22 +118,22 @@ class MyHandler(BaseHTTPRequestHandler):
 			        {
 			            "CheckPoint": {
 			                "GeoPoint": {
-			                    "lat": 43.46,
-			                    "lon": 53.5
+			                    "lat": 55.803923, 
+			                    "lon": 37.514083
 			                },
 			                "url": "http://CheckPointUrl.com:8081",
-			                "pointTitle" : "Road",
+			                "pointTitle" : "All Saints Church",
 			                "StoryId": "3"
 			            }
 			        },
 			        {
 			            "CheckPoint": {
 			                "GeoPoint": {
-			                    "lat": 43.46,
-			                    "lon": 53.6
+			                    "lat": 55.811072, 
+			                    "lon": 37.502378
 			                },
 			                "url": "http://CheckPointUrl.com:8081",
-			                "pointTitle" : "Building",
+			                "pointTitle" : "Moscow Aviation Institute",
 			                "StoryId": "4"
 			            }
 			        }
@@ -153,7 +153,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 43.45,
 			                    "lon": 53.4
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Tree",
 			                "StoryId": "0"
 			            }
@@ -164,7 +164,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 43.55,
 			                    "lon": 53.4
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Wall",
 			                "StoryId": "1"
 			            }
@@ -175,7 +175,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 43.45,
 			                    "lon": 53.5
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Way",
 			                "StoryId": "2"
 			            }
@@ -186,7 +186,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 43.46,
 			                    "lon": 53.5
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Sky",
 			                "StoryId": "3"
 			            }
@@ -197,7 +197,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			                    "lat": 43.46,
 			                    "lon": 53.6
 			                },
-			                "url": "http://CheckPointUrl.com:8081",
+			                "url": "http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/e2/moscow.jpg",
 			                "pointTitle" : "Place",
 			                "StoryId": "4"
 			            }
@@ -285,7 +285,6 @@ class MyHandler(BaseHTTPRequestHandler):
 						}
 				}
 			})
-
 		]
 
 
