@@ -22,6 +22,11 @@
 		9653663F195F67AF0035A8F6 /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653663E195F67AF0035A8F6 /* BlurredView.swift */; };
 		96B53EEE195EDC770054FFE1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53EED195EDC770054FFE1 /* MapKit.framework */; };
 		BC2BFE20195FDC1A00DC0E51 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */; };
+		96FB165A195FB71F00A92D57 /* pin@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB1658195FB71F00A92D57 /* pin@1x.png */; };
+		96FB165B195FB71F00A92D57 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB1659195FB71F00A92D57 /* pin@2x.png */; };
+		96FB165D195FB91700A92D57 /* rightButtImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FB165C195FB91700A92D57 /* rightButtImg.png */; };
+		96FB165F195FC1EC00A92D57 /* GAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB165E195FC1EC00A92D57 /* GAnnotationView.swift */; };
+		96FB1661195FCB5500A92D57 /* GPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB1660195FCB5500A92D57 /* GPointAnnotation.swift */; };
 		DE71FBC7195F747E0053E192 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71FBC6195F747E0053E192 /* CustomTableViewCell.swift */; };
 		DE71FBCB195F75220053E192 /* ChooseARouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE71FBCA195F75220053E192 /* ChooseARouteTableViewController.swift */; };
 		DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */; };
@@ -69,6 +74,11 @@
 		9653663E195F67AF0035A8F6 /* BlurredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlurredView.swift; path = Helpers/BlurredView.swift; sourceTree = "<group>"; };
 		96B53EED195EDC770054FFE1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC2BFE1F195FDC1A00DC0E51 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		96FB1658195FB71F00A92D57 /* pin@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@1x.png"; sourceTree = "<group>"; };
+		96FB1659195FB71F00A92D57 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		96FB165C195FB91700A92D57 /* rightButtImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightButtImg.png; sourceTree = "<group>"; };
+		96FB165E195FC1EC00A92D57 /* GAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GAnnotationView.swift; path = Helpers/GAnnotationView.swift; sourceTree = "<group>"; };
+		96FB1660195FCB5500A92D57 /* GPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPointAnnotation.swift; path = Helpers/GPointAnnotation.swift; sourceTree = "<group>"; };
 		DE71FBC6195F747E0053E192 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		DE71FBCA195F75220053E192 /* ChooseARouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseARouteTableViewController.swift; sourceTree = "<group>"; };
 		DE995FC2195F117D00DBE293 /* PointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointDetailViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +127,8 @@
 				96536638195F64530035A8F6 /* GAlertView.swift */,
 				963B4CE2195EEC540094EAE5 /* LoadingView.swift */,
 				9653663E195F67AF0035A8F6 /* BlurredView.swift */,
+				96FB165E195FC1EC00A92D57 /* GAnnotationView.swift */,
+				96FB1660195FCB5500A92D57 /* GPointAnnotation.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -161,6 +173,9 @@
 		964095FA195ED769004ECEBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				96FB165C195FB91700A92D57 /* rightButtImg.png */,
+				96FB1658195FB71F00A92D57 /* pin@1x.png */,
+				96FB1659195FB71F00A92D57 /* pin@2x.png */,
 				96536636195F4BEE0035A8F6 /* fells_loop.gpx */,
 				96536634195F4B400035A8F6 /* blue_hills.gpx */,
 				E3DC4482195F375C006FDEF2 /* gothere-Bridging-Header.h */,
@@ -346,9 +361,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96FB165B195FB71F00A92D57 /* pin@2x.png in Resources */,
 				96409605195ED769004ECEBF /* Main.storyboard in Resources */,
+				96FB165A195FB71F00A92D57 /* pin@1x.png in Resources */,
 				96409607195ED769004ECEBF /* Images.xcassets in Resources */,
 				9653663D195F66AF0035A8F6 /* blur_sample.png in Resources */,
+				96FB165D195FB91700A92D57 /* rightButtImg.png in Resources */,
 				96536637195F4BEE0035A8F6 /* fells_loop.gpx in Resources */,
 				96536635195F4B400035A8F6 /* blue_hills.gpx in Resources */,
 				BC2BFE20195FDC1A00DC0E51 /* Default-568h@2x.png in Resources */,
@@ -374,11 +392,13 @@
 				963B4CE3195EEC540094EAE5 /* LoadingView.swift in Sources */,
 				E3C69FFC195EDD4F004F8F23 /* Route.swift in Sources */,
 				E3C69FFB195EDD4F004F8F23 /* Point.swift in Sources */,
+				96FB165F195FC1EC00A92D57 /* GAnnotationView.swift in Sources */,
 				DE71FBCB195F75220053E192 /* ChooseARouteTableViewController.swift in Sources */,
 				E3C69FF7195EDD41004F8F23 /* _User.swift in Sources */,
 				DE71FBC7195F747E0053E192 /* CustomTableViewCell.swift in Sources */,
 				96536639195F64530035A8F6 /* GAlertView.swift in Sources */,
 				E3DB028F195EE9A20029663D /* BackendClient.swift in Sources */,
+				96FB1661195FCB5500A92D57 /* GPointAnnotation.swift in Sources */,
 				E3C69FF5195EDD41004F8F23 /* _Point.swift in Sources */,
 				DE995FC3195F117D00DBE293 /* PointDetailViewController.swift in Sources */,
 				E3C69FF6195EDD41004F8F23 /* _Route.swift in Sources */,
