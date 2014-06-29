@@ -46,7 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if routes && self.showRoute {
                 NSLog("%@", routes.description)
 
-                BackendClient.instance.getRouteDetails("1", { (route: Route?, error: NSError?) in
+                BackendClient.instance.getRouteDetails("0", { (route: Route?, error: NSError?) in
                     if route {
                         NSLog("%@", route.description)
                         NSLog("%@", route!.points.description)
@@ -103,7 +103,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         var aview = GAnnotationView(annotation: annotation, reuseIdentifier: "defAnnotId")
         aview.canShowCallout = true
-        var butt = UIButton.buttonWithType(UIButtonType.ContactAdd) as UIButton
+        var butt = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
         butt.addTarget(self, action: "calloutTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         aview.rightCalloutAccessoryView = butt as UIView
         aview.image = UIImage(named: "pin.png")
