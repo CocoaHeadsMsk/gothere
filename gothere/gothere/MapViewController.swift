@@ -13,6 +13,14 @@ import CoreLocation
 let locManager = CLLocationManager()
 let pointDetailsSegue = "toPointDetailSegue"
 
+extension UIViewController {
+    func presentError(error: NSError?) {
+        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var map : MKMapView
     @IBOutlet var routeChoosingButton: UIButton
@@ -46,25 +54,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         BackendClient.instance.getRoutesListOnCompletion({ (routes: Route[]?, error: NSError?) -> () in
             if routes && self.showRoute {
-                NSLog("%@", routes.description)
+//                NSLog("%@", routes.description)
 
                 BackendClient.instance.getRouteDetails("0", { (route: Route?, error: NSError?) in
                     if route {
-                        NSLog("%@", route.description)
-                        NSLog("%@", route!.points.description)
+//                        NSLog("%@", route.description)
+//                        NSLog("%@", route!.points.description)
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                             NSOperationQueue.mainQueue().addOperationWithBlock {
                                 self.showAnnotationsFromSet(route!.points)
                             }
                         }
                     }
-                    else {
-                        NSLog("%@", error.description)
+                    else if error {
+                        self.presentError(error)
                     }
                 })
             }
-            else {
-                NSLog("%@", error.description)
+            else if error {
+                self.presentError(error)
             }
         })
     }
