@@ -31,7 +31,7 @@ class PointDetailViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = UIImage(named:"1.jpg")
+        imageView.image = UIImage()
         println("\(storyId)")
         
         
